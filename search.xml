@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+    
+    <entry>
+      <title><![CDATA[希尔排序（Shell Sort）]]></title>
+      <url>/2017/08/29/ShellSort/</url>
+      <content type="html"><![CDATA[<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>希尔排序的核心在于间隔序列的设定。既可以提前设定好间隔序列，也可以动态的定义间隔序列。</p>
+<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><p>先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序</p>
+<ul>
+<li>选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1</li>
+<li>按增量序列个数k，对序列进行k 趟排序</li>
+<li>每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度</li>
+</ul>
+<h2 id="Javascript-代码实现"><a href="#Javascript-代码实现" class="headerlink" title="Javascript 代码实现"></a>Javascript 代码实现</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">shellSort</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> len = arr.length, temp, gap=<span class="number">1</span>;</div><div class="line">  <span class="keyword">while</span>(gap &lt; len/<span class="number">5</span>) &#123;          <span class="comment">//动态定义间隔序列</span></div><div class="line">    gap =gap*<span class="number">5</span>+<span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">for</span>(gap; gap&gt;<span class="number">0</span>; gap=<span class="built_in">parseInt</span>(gap/<span class="number">5</span>)&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=gap; i&gt;len; i++)&#123;</div><div class="line">      temp = arr[i];</div><div class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> j=i-gap; j&gt;=<span class="number">0</span> &amp;&amp; arr[j]&gt;temp; j-=gap)&#123;</div><div class="line">        arr[j+gap] = arr[j];</div><div class="line">      &#125;</div><div class="line">      arr[j+gap] = temp;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> arr</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><ul>
+<li>最佳情况：T(n) = O(nlog2n)</li>
+<li>最坏情况：T(n) = O(nlog2n)</li>
+<li>平均情况：T(n) = O(nlogn)</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Sort </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[选择排序（Selection Sort）]]></title>
+      <url>/2017/08/29/SelectionSort/</url>
+      <content type="html"><![CDATA[<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>选择排序(Selection-sort)是一种简单直观的排序算法。它的工作原理：首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p>
+<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><ul>
+<li>初始状态：无序区为R[1..n]，有序区为空</li>
+<li>第i趟排序(i=1,2,3…n-1)开始时，当前有序区和无序区分别为R[1..i-1]和R(i..n）。该趟排序从当前无序区中选出关键字最小的记录R[k]，将它与无序区的第1个记录R交换，使R[1..i]和R[i+1..n)分别变为记录个数增加1个的新有序区和记录个数减少1个的新无序区</li>
+<li>n-1趟结束，数组有序化了</li>
+</ul>
+<h2 id="Javascript-代码实现"><a href="#Javascript-代码实现" class="headerlink" title="Javascript 代码实现"></a>Javascript 代码实现</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectionSort</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> len = arr.length;</div><div class="line">  <span class="keyword">var</span> minIndex, temp;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</div><div class="line">    minIndex = i;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = i + <span class="number">1</span>; j &lt; len; j++) &#123;</div><div class="line">      <span class="keyword">if</span> (arr[j] &lt; arr[minIndex]) &#123;     <span class="comment">//寻找最小的数</span></div><div class="line">        minIndex = j;                 <span class="comment">//将最小数的索引保存</span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    temp = arr[i];</div><div class="line">    arr[i] = arr[minIndex];</div><div class="line">    arr[minIndex] = temp;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><ul>
+<li>最佳情况：T(n) = O(n2)</li>
+<li>最差情况：T(n) = O(n2)</li>
+<li>平均情况：T(n) = O(n2)</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Sort </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[基数排序（Radix Sort）]]></title>
+      <url>/2017/08/29/RadixSort/</url>
+      <content type="html"><![CDATA[<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>基数排序是按照低位先排序，然后收集；再按照高位排序，然后再收集；依次类推，直到最高位。有时候有些属性是有优先级顺序的，先按低优先级排序，再按高优先级排序。最后的次序就是高优先级高的在前，高优先级相同的低优先级高的在前。基数排序基于分别排序，分别收集，所以是稳定的。</p>
+<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><ul>
+<li>取得数组中的最大数，并取得位数</li>
+<li>arr为原始数组，从最低位开始取每个位组成radix数组</li>
+<li>对radix进行计数排序（利用计数排序适用于小范围数的特点）</li>
+</ul>
+<h2 id="Javascript-代码实现"><a href="#Javascript-代码实现" class="headerlink" title="Javascript 代码实现"></a>Javascript 代码实现</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">radixSort</span>(<span class="params">arr, maxDigit</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> mod = <span class="number">10</span>;</div><div class="line">  <span class="keyword">var</span> dev = <span class="number">1</span>;</div><div class="line">  <span class="keyword">var</span> counter = [];</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; maxDigit; i++, dev *= <span class="number">10</span>, mod *= <span class="number">10</span>) &#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; arr.length; j++) &#123;</div><div class="line">      <span class="keyword">var</span> bucket = <span class="built_in">parseInt</span>((arr[j] % mod) / dev);</div><div class="line">      <span class="keyword">if</span> (counter[bucket] == <span class="literal">null</span>) &#123;</div><div class="line">        counter[bucket] = [];</div><div class="line">      &#125;</div><div class="line">      counter[bucket].push(arr[j]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> pos = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; counter.length; j++) &#123;</div><div class="line">      <span class="keyword">var</span> value = <span class="literal">null</span>;</div><div class="line">      <span class="keyword">if</span> (counter[j] != <span class="literal">null</span>) &#123;</div><div class="line">        <span class="keyword">while</span> ((value = counter[j].shift()) != <span class="literal">null</span>) &#123;</div><div class="line">          arr[pos++] = value;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><ul>
+<li>最佳情况：T(n) = O(n * k)</li>
+<li>最差情况：T(n) = O(n * k)</li>
+<li>平均情况：T(n) = O(n * k)</li>
+</ul>
+<h2 id="5-基数排序-vs-计数排序-vs-桶排序"><a href="#5-基数排序-vs-计数排序-vs-桶排序" class="headerlink" title="5.基数排序 vs 计数排序 vs 桶排序"></a>5.基数排序 vs 计数排序 vs 桶排序</h2><p>这三种排序算法都利用了桶的概念，但对桶的使用方法上有明显差异：</p>
+<ul>
+<li>基数排序：根据键值的每位数字来分配桶</li>
+<li>计数排序：每个桶只存储单一键值</li>
+<li>桶排序：每个桶存储一定范围的数值</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Sort </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[归并排序（Merge Sort）]]></title>
+      <url>/2017/08/29/MergeSort/</url>
+      <content type="html"><![CDATA[<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>归并排序是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。归并排序是一种稳定的排序方法。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为2-路归并。</p>
+<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><ul>
+<li>把长度为n的输入序列分成两个长度为n/2的子序列</li>
+<li>对这两个子序列分别采用归并排序</li>
+<li>将两个排序好的子序列合并成一个最终的排序序列</li>
+</ul>
+<h2 id="Javascript-代码实现"><a href="#Javascript-代码实现" class="headerlink" title="Javascript 代码实现"></a>Javascript 代码实现</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mergeSort</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> len = arr.length;</div><div class="line">  <span class="keyword">if</span>(len&lt;<span class="number">2</span>)&#123;</div><div class="line">    <span class="keyword">return</span> arr;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> middle = <span class="built_in">parseInt</span>(len/<span class="number">2</span>),</div><div class="line">      left = arr.slice(<span class="number">0</span>, middle);</div><div class="line">      right = arr.slice(middle);</div><div class="line">  <span class="keyword">return</span> merge(mergeSort(left), mergeSort(right));</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">merge</span>(<span class="params">left, right</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> result = [];</div><div class="line">  <span class="keyword">while</span>(left.length &amp;&amp; right.length) &#123;</div><div class="line">    <span class="keyword">if</span>(left[<span class="number">0</span>] &lt;= right[<span class="number">0</span>]) &#123;</div><div class="line">      result.push(left.shift());</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      result.push(right.shift());</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">while</span>(left.length)</div><div class="line">    result.push(left.shift());</div><div class="line">  <span class="keyword">while</span>(right.length)</div><div class="line">    result.push(right.shift());</div><div class="line">  <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><ul>
+<li>最佳情况：T(n) = O(n)</li>
+<li>最差情况：T(n) = O(nlogn)</li>
+<li>平均情况：T(n) = O(nlogn)</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Sort </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[堆排序（Heap Sort）]]></title>
+      <url>/2017/08/29/HeapSort/</url>
+      <content type="html"><![CDATA[<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>堆排序（Heapsort）是指利用堆这种数据结构所设计的一种排序算法。堆积是一个近似完全二叉树的结构，并同时满足堆积的性质：即子结点的键值或索引总是小于（或者大于）它的父节点。</p>
+<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><ul>
+<li>将初始待排序关键字序列(R1,R2….Rn)构建成大顶堆，此堆为初始的无序区</li>
+<li>将堆顶元素R[1]与最后一个元素R[n]交换，此时得到新的无序区(R1,R2,……Rn-1)和新的有序区(Rn),且满足R[1,2…n-1]&lt;=R[n]</li>
+<li>由于交换后新的堆顶R[1]可能违反堆的性质，因此需要对当前无序区(R1,R2,……Rn-1)调整为新堆，然后再次将R[1]与无序区最后一个元素交换，得到新的无序区(R1,R2….Rn-2)和新的有序区(Rn-1,Rn)。不断重复此过程直到有序区的元素个数为n-1，则整个排序过程完成</li>
+</ul>
+<h2 id="Javascript-代码实现"><a href="#Javascript-代码实现" class="headerlink" title="Javascript 代码实现"></a>Javascript 代码实现</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">heapSort</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 从index开始检查并保持最大堆性质</span></div><div class="line"><span class="comment">   * @arr</span></div><div class="line"><span class="comment">   * @index 检查的起始下标</span></div><div class="line"><span class="comment">   * @heapSize 堆大小</span></div><div class="line"><span class="comment">   **/</span></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">maxHeapify</span>(<span class="params">arr, index, heapSize</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> iMax = index,</div><div class="line">      iLeft = <span class="number">2</span> * index + <span class="number">1</span>,</div><div class="line">      iRight = <span class="number">2</span> * (index + <span class="number">1</span>);</div><div class="line">    <span class="keyword">if</span> (iLeft &lt; heapSize &amp;&amp; arr[index] &lt; arr[iLeft]) &#123;</div><div class="line">      iMax = iLeft;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (iRight &lt; heapSize &amp;&amp; arr[iMax] &lt; arr[iRight]) &#123;</div><div class="line">      iMax = iRight;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (iMax != index) &#123;</div><div class="line">      swap(arr, iMax, index);</div><div class="line">      maxHeapify(arr, iMax, heapSize); <span class="comment">// 递归调整</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">swap</span>(<span class="params">arr, i, j</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> temp = arr[i];</div><div class="line">    arr[i] = arr[j];</div><div class="line">    arr[j] = temp;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// 创建最大堆</span></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">buildMaxHeap</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> i,</div><div class="line">      iParent = <span class="built_in">Math</span>.floor(arr.length / <span class="number">2</span>) - <span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> (i = iParent; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">      maxHeapify(arr, i, arr.length);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">    buildMaxHeap(arr);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = arr.length - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</div><div class="line">      swap(arr, <span class="number">0</span>, i);</div><div class="line">      maxHeapify(arr, <span class="number">0</span>, i);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> arr;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> sort(arr);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><ul>
+<li>最佳情况：T(n) = O(nlogn)</li>
+<li>最差情况：T(n) = O(nlogn)</li>
+<li>平均情况：T(n) = O(nlogn)</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Sort </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[计数排序（Counting Sort）]]></title>
+      <url>/2017/08/29/CountingSort/</url>
+      <content type="html"><![CDATA[<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>计数排序的核心在于将输入的数据值转化为键存储在额外开辟的数组空间中。作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有确定范围的整数。计数排序(Counting sort)是一种稳定的排序算法。计数排序使用一个额外的数组C，其中第i个元素是待排序数组A中值等于i的元素的个数。然后根据数组C来将A中的元素排到正确的位置。</p>
+<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><ul>
+<li>找出待排序的数组中最大和最小的元素</li>
+<li>统计数组中每个值为i的元素出现的次数，存入数组C的第i项</li>
+<li>对所有的计数累加（从C中的第一个元素开始，每一项和前一项相加）</li>
+<li>反向填充目标数组：将每个元素i放在新数组的第C(i)项，每放一个元素就将C(i)减去1</li>
+</ul>
+<h2 id="Javascript-代码实现"><a href="#Javascript-代码实现" class="headerlink" title="Javascript 代码实现"></a>Javascript 代码实现</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">countingSort</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> len = arr.length,</div><div class="line">    B = [],</div><div class="line">    C = [],</div><div class="line">    min = max = arr[<span class="number">0</span>];</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;len; i++)&#123;</div><div class="line">    min = min &lt;= arr[i] ? min : arr[i];</div><div class="line">    max = max &gt;= arr[i] ? max : arr[i];</div><div class="line">    C[arr[i]] = C[arr[i]] ? C[arr[i]]+<span class="number">1</span> : <span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> j = min; j &lt; max; j++) &#123;</div><div class="line">    C[j + <span class="number">1</span>] = (C[j + <span class="number">1</span>] || <span class="number">0</span>) + (C[j] || <span class="number">0</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> k = len<span class="number">-1</span>; k &gt;=<span class="number">0</span>; k--) &#123;</div><div class="line">    B[C[arr[k]]<span class="number">-1</span>] = arr[k];</div><div class="line">    C[arr[k]]--;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> B;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><p>当输入的元素是n 个0到k之间的整数时，它的运行时间是 O(n + k)。计数排序不是比较排序，排序的速度快于任何比较排序算法。由于用来计数的数组C的长度取决于待排序数组中数据的范围（等于待排序数组的最大值与最小值的差加上1），这使得计数排序对于数据范围很大的数组，需要大量时间和内存。</p>
+<ul>
+<li>最佳情况：T(n) = O(n+k)</li>
+<li>最差情况：T(n) = O(n+k)</li>
+<li>平均情况：T(n) = O(n+k)</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Sort </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[桶排序（Bucket Sort）]]></title>
+      <url>/2017/08/29/BucketSort/</url>
+      <content type="html"><![CDATA[<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>桶排序是计数排序的升级版。它利用了函数的映射关系，高效与否的关键就在于这个映射函数的确定。桶排序 (Bucket sort)的工作的原理：假设输入数据服从均匀分布，将数据分到有限数量的桶里，每个桶再分别排序（有可能再使用别的排序算法或是以递归方式继续使用桶排序进行排序）。</p>
+<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><ul>
+<li>设置一个定量的数组当作空桶</li>
+<li>遍历输入数据，并且把数据一个一个放到对应的桶里去</li>
+<li>对每个不是空的桶进行排序</li>
+<li>从不是空的桶里把排好序的数据拼接起来</li>
+</ul>
+<h2 id="Javascript-代码实现"><a href="#Javascript-代码实现" class="headerlink" title="Javascript 代码实现"></a>Javascript 代码实现</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bucketSort</span>(<span class="params">arr, num</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (arr.length &lt;= <span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> arr;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> len = arr.length,</div><div class="line">    buckets = [],</div><div class="line">    result = [],</div><div class="line">    min = arr[<span class="number">0</span>],</div><div class="line">    max = arr[<span class="number">0</span>],</div><div class="line">    regex = <span class="string">'/^[1-9]+[0-9]*$/'</span>,</div><div class="line">    space, n = <span class="number">0</span>;</div><div class="line">  num = num || ((num &gt; <span class="number">1</span> &amp;&amp; regex.test(num)) ? num : <span class="number">10</span>);</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;</div><div class="line">    min = min &lt;= arr[i] ? min : arr[i];</div><div class="line">    max = max &gt;= arr[i] ? max : arr[i];</div><div class="line">  &#125;</div><div class="line">  <span class="comment">//求出每一个桶的数值范围</span></div><div class="line">  space = (max - min + <span class="number">1</span>) / num;</div><div class="line">  <span class="comment">//将数值装入桶中</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; len; j++) &#123;</div><div class="line">    <span class="comment">//找到相应的桶序列</span></div><div class="line">    <span class="keyword">var</span> index = <span class="built_in">Math</span>.floor((arr[j] - min) / space);</div><div class="line">    <span class="comment">//判断是否桶中已经有数值</span></div><div class="line">    <span class="keyword">if</span> (buckets[index]) &#123;</div><div class="line">      <span class="comment">//数组从小到大排列</span></div><div class="line">      <span class="keyword">var</span> k = buckets[index].length - <span class="number">1</span>;</div><div class="line">      <span class="keyword">while</span> (k &gt;= <span class="number">0</span> &amp;&amp; buckets[index][k] &gt; arr[j]) &#123;</div><div class="line">        buckets[index][k + <span class="number">1</span>] = buckets[index][k];</div><div class="line">        k--</div><div class="line">      &#125;</div><div class="line">      buckets[index][k + <span class="number">1</span>] = arr[j];</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="comment">//新增数值入桶，暂时用数组模拟链表</span></div><div class="line">      buckets[index] = [];</div><div class="line">      buckets[index].push(arr[j]);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">//开始合并数组</span></div><div class="line">  <span class="keyword">var</span> n = <span class="number">0</span>;</div><div class="line">  <span class="keyword">while</span> (n &lt; num) &#123;</div><div class="line">    result = result.concat(buckets[n]);</div><div class="line">    n++;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><p>桶排序最好情况下使用线性时间O(n)，桶排序的时间复杂度，取决与对各个桶之间数据进行排序的时间复杂度，因为其它部分的时间复杂度都为O(n)。很显然，桶划分的越小，各个桶之间的数据越少，排序所用的时间也会越少。但相应的空间消耗就会增大。</p>
+<ul>
+<li>最佳情况：T(n) = O(n+k)</li>
+<li>最差情况：T(n) = O(n+k)</li>
+<li>平均情况：T(n) = O(n2)</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Sort </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[快速排序（Quick Sort）]]></title>
+      <url>/2017/08/29/QuickSort/</url>
+      <content type="html"><![CDATA[<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>快速排序的基本思想：通过一趟排序将待排记录分隔成独立的两部分，其中一部分记录的关键字均比另一部分的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序。</p>
+<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><ul>
+<li>从数列中挑出一个元素，称为 “基准”（pivot）</li>
+<li>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作</li>
+<li>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序</li>
+</ul>
+<h2 id="Javascript-代码实现"><a href="#Javascript-代码实现" class="headerlink" title="Javascript 代码实现"></a>Javascript 代码实现</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(arr.length &lt;= <span class="number">1</span>)&#123;</div><div class="line">    <span class="keyword">return</span> arr;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// 选择基准</span></div><div class="line">  <span class="keyword">var</span> pivotIndex = <span class="built_in">Math</span>.floor(arr.length/<span class="number">2</span>);</div><div class="line">  <span class="keyword">var</span> pivot = arr.splice(pivotIndex, <span class="number">1</span>)[<span class="number">0</span>];</div><div class="line">  <span class="comment">// 定义两个空数组，存放子集</span></div><div class="line">  <span class="keyword">var</span> left = [];</div><div class="line">  <span class="keyword">var</span> right = [];</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++)&#123;</div><div class="line">　　<span class="keyword">if</span> (arr[i] &lt; pivot) &#123;</div><div class="line">　　　left.push(arr[i]);</div><div class="line">　　&#125; <span class="keyword">else</span> &#123;</div><div class="line">　　　right.push(arr[i]);</div><div class="line">　　&#125;</div><div class="line">　&#125;</div><div class="line">  <span class="keyword">return</span> quickSort(left).concat([pivot], quickSort(right));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><ul>
+<li>最佳情况：T(n) = O(nlogn)</li>
+<li>最差情况：T(n) = O(n2)</li>
+<li>平均情况：T(n) = O(nlogn)</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Sort </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Http状态码整理]]></title>
+      <url>/2017/08/29/Http%E8%AF%B7%E6%B1%82%E7%8A%B6%E6%80%81%E7%A0%81/</url>
+      <content type="html"><![CDATA[<h3 id="1xx-信息提示"><a href="#1xx-信息提示" class="headerlink" title="1xx - 信息提示"></a>1xx - 信息提示</h3><p>这些状态代码表示临时的响应。客户端在收到常规响应之前，应准备接收一个或多个 1xx 响应。</p>
+<ul>
+<li>100 - Continue 初始的请求已经接受，客户应当继续发送请求的其余部分。（HTTP 1.1新）</li>
+<li>101 - Switching Protocols 服务器将遵从客户的请求转换到另外一种协议（HTTP 1.1新）</li>
+</ul>
+<h3 id="2xx-成功"><a href="#2xx-成功" class="headerlink" title="2xx - 成功"></a>2xx - 成功</h3><p>这类状态代码表明服务器成功地接受了客户端请求。</p>
+<ul>
+<li>200 - OK 一切正常，对GET和POST请求的应答文档跟在后面。</li>
+<li>201 - Created 服务器已经创建了文档，Location头给出了它的URL。</li>
+<li>202 - Accepted 已经接受请求，但处理尚未完成。</li>
+<li>203 - Non-Authoritative Information 文档已经正常地返回，但一些应答头可能不正确，因为使用的是文档的拷贝，非权威性信息（HTTP 1.1新）。</li>
+<li>204 - No Content 没有新文档，浏览器应该继续显示原来的文档。如果用户定期地刷新页面，而Servlet可以确定用户文档足够新，这个状态代码是很有用的。</li>
+<li>205 - Reset Content 没有新的内容，但浏览器应该重置它所显示的内容。用来强制浏览器清除表单输入内容（HTTP 1.1新）。</li>
+<li>206 - Partial Content 客户发送了一个带有Range头的GET请求，服务器完成了它（HTTP 1.1新）。</li>
+</ul>
+<h3 id="3xx-重定向"><a href="#3xx-重定向" class="headerlink" title="3xx - 重定向"></a>3xx - 重定向</h3><p>客户端浏览器必须采取更多操作来实现请求。例如，浏览器可能不得不请求服务器上的不同的页面，或通过代理服务器重复该请求。</p>
+<ul>
+<li>300 - Multiple Choices 客户请求的文档可以在多个位置找到，这些位置已经在返回的文档内列出。如果服务器要提出优先选择，则应该在Location应答头指明。</li>
+<li>301 - Moved Permanently 客户请求的文档在其他地方，新的URL在Location头中给出，浏览器应该自动地访问新的URL。</li>
+<li>302 - Found 类似于301，但新的URL应该被视为临时性的替代，而不是永久性的。注意，在HTTP1.0中对应的状态信息是“Moved Temporatily”。出现该状态代码时，浏览器能够自动访问新的URL，因此它是一个很有用的状态代码。注意这个状态代码有时候可以和301替换使用。例如，如果浏览器错误地请求 <a href="http://host/~user" target="_blank" rel="external">http://host/~user</a> （缺少了后面的斜杠），有的服务器返回301，有的则返回302。严格地说，我们只能假定只有当原来的请求是GET时浏览器才会自动重定向。请参见 307。</li>
+<li>303 - See Other 类似于301/302，不同之处在于，如果原来的请求是POST，Location头指定的重定向目标文档应该通过GET提取（HTTP 1.1新）。</li>
+<li>304 - Not Modified 客户端有缓冲的文档并发出了一个条件性的请求（一般是提供If-Modified-Since头表示客户只想比指定日期更新的文档）。服务器告诉客户，原来缓冲的文档还可以继续使用。</li>
+<li>305 - Use Proxy 客户请求的文档应该通过Location头所指明的代理服务器提取（HTTP 1.1新）。</li>
+<li>307 - Temporary Redirect 和302（Found）相同。许多浏览器会错误地响应302应答进行重定向，即使原来的请求是POST，即使它实际上只能在POST请求的应答是303时才能重定向。由于这个原因，HTTP 1.1新增了307，以便更加清除地区分几个状态代码：当出现303应答时，浏览器可以跟随重定向的GET和POST请求；如果是307应答，则浏览器只能跟随对GET请求的重定向。（HTTP 1.1新）</li>
+</ul>
+<h3 id="4xx-客户端错误"><a href="#4xx-客户端错误" class="headerlink" title="4xx - 客户端错误"></a>4xx - 客户端错误</h3><p>发生错误，客户端似乎有问题。例如，客户端请求不存在的页面，客户端未提供有效的身份验证信息。</p>
+<ul>
+<li>400 - Bad Request 请求出现语法错误。</li>
+<li>401 - Unauthorized 访问被拒绝，客户试图未经授权访问受密码保护的页面。应答中会包含一个WWW-Authenticate头，浏览器据此显示用户名字/密码对话框，然后在填写合适的Authorization头后再次发出请求。IIS 定义了许多不同的 401 错误，它们指明更为具体的错误原因。</li>
+</ul>
+<p><strong>这些具体的错误代码在浏览器中显示，但不在 IIS 日志中显示：</strong></p>
+<ul>
+<li>401.1 - 登录失败。</li>
+<li>401.2 - 服务器配置导致登录失败。</li>
+<li>401.3 - 由于 ACL 对资源的限制而未获得授权。</li>
+<li>401.4 - 筛选器授权失败。</li>
+<li>401.5 - ISAPI/CGI 应用程序授权失败。</li>
+<li>401.7 – 访问被 Web 服务器上的 URL 授权策略拒绝。这个错误代码为 IIS 6.0 所专用。</li>
+<li>403 - Forbidden 资源不可用。服务器理解客户的请求，但拒绝处理它。通常由于服务器上文件或目录的权限设置导致。</li>
+</ul>
+<p><strong>禁止访问：IIS 定义了许多不同的 403 错误，它们指明更为具体的错误原因：</strong></p>
+<ul>
+<li>403.1 - 执行访问被禁止。</li>
+<li>403.2 - 读访问被禁止。</li>
+<li>403.3 - 写访问被禁止。</li>
+<li>403.4 - 要求 SSL。</li>
+<li>403.5 - 要求 SSL 128。</li>
+<li>403.6 - IP 地址被拒绝。</li>
+<li>403.7 - 要求客户端证书。</li>
+<li>403.8 - 站点访问被拒绝。</li>
+<li>403.9 - 用户数过多。</li>
+<li>403.10 - 配置无效。</li>
+<li>403.11 - 密码更改。</li>
+<li>403.12 - 拒绝访问映射表。</li>
+<li>403.13 - 客户端证书被吊销。</li>
+<li>403.14 - 拒绝目录列表。</li>
+<li>403.15 - 超出客户端访问许可。</li>
+<li>403.16 - 客户端证书不受信任或无效。</li>
+<li>403.17 - 客户端证书已过期或尚未生效。</li>
+<li>403.18 - 在当前的应用程序池中不能执行所请求的 URL。这个错误代码为 IIS 6.0 所专用。</li>
+<li>403.19 - 不能为这个应用程序池中的客户端执行 CGI。这个错误代码为 IIS 6.0 所专用。</li>
+<li>403.20 - Passport 登录失败。这个错误代码为 IIS 6.0 所专用。</li>
+<li>404 - Not Found 无法找到指定位置的资源。这也是一个常用的应答。</li>
+<li>404.0 -（无） – 没有找到文件或目录。</li>
+<li>404.1 - 无法在所请求的端口上访问 Web 站点。</li>
+<li>404.2 - Web 服务扩展锁定策略阻止本请求。</li>
+<li>404.3 - MIME 映射策略阻止本请求。</li>
+<li>405 - Method Not Allowed 请求方法（GET、POST、HEAD、Delete、PUT、TRACE等）对指定的资源不适用，用来访问本页面的 HTTP 谓词不被允许（方法不被允许）（HTTP 1.1新）</li>
+<li>406 - Not Acceptable 指定的资源已经找到，但它的MIME类型和客户在Accpet头中所指定的不兼容，客户端浏览器不接受所请求页面的 MIME 类型（HTTP 1.1新）。</li>
+<li>407 - Proxy Authentication Required 要求进行代理身份验证，类似于401，表示客户必须先经过代理服务器的授权。（HTTP 1.1新）</li>
+<li>408 - Request Timeout 在服务器许可的等待时间内，客户一直没有发出任何请求。客户可以在以后重复同一请求。（HTTP 1.1新）</li>
+<li>409 - Conflict 通常和PUT请求有关。由于请求和资源的当前状态相冲突，因此请求不能成功。（HTTP 1.1新）</li>
+<li>410 - Gone 所请求的文档已经不再可用，而且服务器不知道应该重定向到哪一个地址。它和404的不同在于，返回407表示文档永久地离开了指定的位置，而404表示由于未知的原因文档不可用。（HTTP 1.1新）</li>
+<li>411 - Length Required 服务器不能处理请求，除非客户发送一个Content-Length头。（HTTP 1.1新）</li>
+<li>412 - Precondition Failed 请求头中指定的一些前提条件失败（HTTP 1.1新）。</li>
+<li>413 – Request Entity Too Large 目标文档的大小超过服务器当前愿意处理的大小。如果服务器认为自己能够稍后再处理该请求，则应该提供一个Retry-After头（HTTP 1.1新）。</li>
+<li>414 - Request URI Too Long URI太长（HTTP 1.1新）。</li>
+<li>415 – 不支持的媒体类型。</li>
+<li>416 – Requested Range Not Satisfiable 服务器不能满足客户在请求中指定的Range头。（HTTP 1.1新）</li>
+<li>417 – 执行失败。</li>
+<li>423 – 锁定的错误。</li>
+</ul>
+<h3 id="5xx-服务器错误"><a href="#5xx-服务器错误" class="headerlink" title="5xx - 服务器错误"></a>5xx - 服务器错误</h3><p>服务器由于遇到错误而不能完成该请求。</p>
+<ul>
+<li>500 - Internal Server Error 服务器遇到了意料不到的情况，不能完成客户的请求。</li>
+<li>500.12 - 应用程序正忙于在 Web 服务器上重新启动。</li>
+<li>500.13 - Web 服务器太忙。</li>
+<li>500.15 - 不允许直接请求 Global.asa。</li>
+<li>500.16 – UNC 授权凭据不正确。这个错误代码为 IIS 6.0 所专用。</li>
+<li>500.18 – URL 授权存储不能打开。这个错误代码为 IIS 6.0 所专用。</li>
+<li>500.100 - 内部 ASP 错误。</li>
+<li>501 - Not Implemented 服务器不支持实现请求所需要的功能，页眉值指定了未实现的配置。例如，客户发出了一个服务器不支持的PUT请求。</li>
+<li>502 - Bad Gateway 服务器作为网关或者代理时，为了完成请求访问下一个服务器，但该服务器返回了非法的应答。亦说Web服务器用作网关或代理服务器时收到了无效响应。</li>
+<li>502.1 - CGI 应用程序超时。</li>
+<li>502.2 - CGI 应用程序出错。</li>
+<li>503 - Service Unavailable 服务不可用，服务器由于维护或者负载过重未能应答。例如，Servlet可能在数据库连接池已满的情况下返回503。服务器返回503时可以提供一个 Retry-After头。这个错误代码为 IIS 6.0 所专用。</li>
+<li>504 - Gateway Timeout 网关超时，由作为代理或网关的服务器使用，表示不能及时地从远程服务器获得应答。（HTTP 1.1新）。</li>
+<li>505 - HTTP Version Not Supported 服务器不支持请求中所指明的HTTP版本。（HTTP 1.1新）。</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Http </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[OSI七层模型]]></title>
+      <url>/2017/08/29/OSI/</url>
+      <content type="html"><![CDATA[<h2 id="OSI模型（Open-System-Interconnection-Reference-Model）"><a href="#OSI模型（Open-System-Interconnection-Reference-Model）" class="headerlink" title="OSI模型（Open System Interconnection Reference Model）"></a>OSI模型（Open System Interconnection Reference Model）</h2><p>具体层次划分：</p>
+<ul>
+<li>第7层应用层（Application Layer）。提供为应用软件而设的界面，以设置与另一应用软件之间的通信。例如：HTTP，HTTPS，FTP，TELNET，SSH，SMTP，POP3等。</li>
+<li>第6层表达层（Presentation Layer）。把数据转换为能与接收者的系统格式兼容并适合传输的格式。</li>
+<li>第5层会话层（Session Layer）。负责在数据传输中设置和维护电脑网络中两台电脑之间的通信连接。</li>
+<li>第4层传输层（Transport Layer）。把传输表头（TH）加至数据以形成数据包。传输表头包含了所使用的协议等发送信息。例如：传输控制协议义（TCP）等。</li>
+<li>第3层网络层（Network Layer）。决定数据的路径选择和转寄，将网络表头（NH）加至数据包，以形成分组。网络表头包含了网络数据。例如：互联网协议（IP）等。</li>
+<li>第2层数据链路层（Data Link Layer）。负责网络寻址、错误侦测和改错。当表头和表尾被加至数据包时，会形成了帧。数据链表头（DLH）是包含了物理地址和错误侦测及改错的方法。数据链表尾（DLT）是一串指示数据包末端的字符串。例如以太网、无线局域网（Wi-Fi）和通用分组无线服务（GPRS）等。</li>
+<li>第1层物理层（Physical Layer）。在局部局域网上传送帧，它负责管理电脑通信设备和网络媒体之间的互通。包括了针脚、电压、线缆规范、集线器、中继器、网卡、主机适配器等。</li>
+</ul>
+<p>OSI 整个模型层次大致可以分为3个主要层面来看：</p>
+<ul>
+<li>主机（高层）：应用、表示、会话。负责主机之间的数据传输</li>
+<li>网络（中层）：传输、网络。负责网络互联</li>
+<li>介质（底层）：数据链路、物理。负责介质传输</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Http </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[关于跨域的那些事]]></title>
+      <url>/2017/08/29/%E8%B7%A8%E5%9F%9F/</url>
+      <content type="html"><![CDATA[<h2 id="什么是跨域"><a href="#什么是跨域" class="headerlink" title="什么是跨域"></a>什么是跨域</h2><p>只要协议、域名、端口有任何一个不同，都被当作是不同的域。<br>同源策略：同源策略限制从一个源加载的文档或脚本如何与来自另一个源的资源进行交互。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">URL                                 说明                  是否允许通信</div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/b.js               同一域名下             允许</span></div><div class="line"></div><div class="line">http:<span class="comment">//www.a.com/lab/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/script/b.js        同一域名下不同文件夹    允许</span></div><div class="line"></div><div class="line">http:<span class="comment">//www.a.com:8000/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/b.js               同一域名，不同端口      不允许</span></div><div class="line"></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">https:<span class="comment">//www.a.com/b.js              同一域名，不同协议      不允许</span></div><div class="line"></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//70.32.92.74/b.js             域名和域名对应ip        不允许</span></div><div class="line"></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//script.a.com/b.js            主域相同，子域不同      不允许</span></div><div class="line"></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//a.com/b.js                   同一域名，不同二级域名（同上） 不允许（cookie这种情况下也不允许访问）</span></div><div class="line"></div><div class="line">http:<span class="comment">//www.cnblogs.com/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/b.js               不同域名               不允许</span></div></pre></td></tr></table></figure></p>
+<p>端口和协议的不同，只能通过后台来解决。</p>
+<h2 id="Ajax请求不同源的跨域"><a href="#Ajax请求不同源的跨域" class="headerlink" title="Ajax请求不同源的跨域"></a>Ajax请求不同源的跨域</h2><h3 id="通过CORS跨域"><a href="#通过CORS跨域" class="headerlink" title="通过CORS跨域"></a>通过CORS跨域</h3><p><strong><code>CORS(Cross-Origin Resource Sharing)</code></strong> 跨域资源共享，定义了必须在访问跨域资源时，浏览器与服务器应该如何沟通。CORS背后的基本思想就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功还是失败。服务器端对于CORS的支持，主要就是通过设置Access-Control-Allow-Origin来进行的。如果浏览器检测到相应的设置，就可以允许Ajax进行跨域的访问。</p>
+<p>跨源资源共享标准( cross-origin sharing standard) 使得以下场景可以使用跨站 HTTP 请求：</p>
+<ul>
+<li>使用 XMLHttpRequest 或 Fetch发起跨站 HTTP 请求</li>
+<li>Web 字体 (CSS 中通过 @font-face 使用跨站字体资源)，因此，网站就可以发布 TrueType 字体资源，并只允许已授权网站进行跨站调用</li>
+<li>WebGL 贴图</li>
+<li>使用drawImage绘制</li>
+<li>Images/video 画面到canvas</li>
+<li>样式表（使用 CSSOM）</li>
+<li>Scripts (for unmuted exceptions)<br>所有浏览器都支持该功能，IE浏览器不能低于IE10。通过 XMLHttpRequest 对象发起。但Internet Explorer 8 和 9 可以通过 XDomainRequest 对象来实现CORS。可以把CORS分为：简单请求、预请求和附带凭证信息的请求。<h3 id="通过JSONP跨域"><a href="#通过JSONP跨域" class="headerlink" title="通过JSONP跨域"></a>通过JSONP跨域</h3><strong><code>JSONP(JSON with padding)</code></strong> 也叫填充式JSON，是应用JSON的一种新方法，只不过是被包含在函数调用中的JSON。</li>
+<li>JSONP由两部分组成：回调函数和数据。回调函数是当响应到来时应该在页面中调用的函数，而数据就是传入回调函数中的JSON数据。</li>
+<li>基本原理：网页通过添加一个<script>元素，向服务器请求JSON数据，这种做法不受同源政策限制；服务器收到请求后，将数据放在一个指定名字的回调函数里传回来。<br>例如：<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">  <span class="comment">// 处理获得的JSON数据</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</div><div class="line">script.src = <span class="string">'http://example.com/users/Agressif?callback=doSomething'</span>;</div><div class="line"><span class="built_in">document</span>.body.append(script);</div><div class="line"><span class="comment">//服务器收到这个请求以后，会将数据放在回调函数的参数位置返回</span></div><div class="line">doSomething(data)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>JSONP的优缺点：</p>
+<ul>
+<li>优点：简单适用，老式浏览器全部支持，服务器改造小。不需要XMLHttpRequest或ActiveX的支持。</li>
+<li>缺点：它只支持GET请求而不支持POST等其它类型的HTTP请求；它只支持跨域HTTP请求这种情况，不能解决不同域的两个页面之间如何进行JavaScript调用的问题。</li>
+</ul>
+<h3 id="CORS与JSONP对比"><a href="#CORS与JSONP对比" class="headerlink" title="CORS与JSONP对比"></a>CORS与JSONP对比</h3><ul>
+<li>JSONP只能实现GET请求，而CORS支持所有类型的HTTP请求</li>
+<li>使用CORS，开发者可以使用普通的XMLHttpRequest发起请求和获得数据，比起JSONP有更好的错误处理</li>
+<li>JSONP主要被老的浏览器支持，它们往往不支持CORS，而绝大多数现代浏览器都已经支持了CORS）</li>
+</ul>
+<h2 id="完全不同源的跨域（两个页面之间的通信）"><a href="#完全不同源的跨域（两个页面之间的通信）" class="headerlink" title="完全不同源的跨域（两个页面之间的通信）"></a>完全不同源的跨域（两个页面之间的通信）</h2><h3 id="使用document-domain来跨域"><a href="#使用document-domain来跨域" class="headerlink" title="使用document.domain来跨域"></a>使用document.domain来跨域</h3><p>浏览器都有一个同源策略，其限制之一就是不能通过ajax的方法去请求不同源中的文档。 它的第二个限制是浏览器中不同域的框架之间是不能进行js的交互操作的。</p>
+<p><strong>document.domain的场景只适用于不同子域的框架间的交互，及主域必须相同的不同源</strong></p>
+<p>不同的框架之间是可以获取window对象的，但却无法获取相应的属性和方法。比如，有一个页面，它的地址是 <code>http://www.example.com/a.html</code> ， 在这个页面里面有一个iframe，它的src是 <code>http://example.com/b.html</code>, 很显然，这个页面与它里面的iframe框架是不同域的，所以我们是无法通过在页面中书写js代码来获取iframe中的东西的。</p>
+<p>这个时候，document.domain就可以派上用场了，我们只要把 <code>http://www.example.com/a.html</code> 和 <code>http://example.com/b.html</code> 这两个页面的document.domain都设成相同的域名就可以了。但要注意的是，document.domain的设置是有限制的，我们只能把document.domain设置成自身或更高一级的父域，且主域必须相同。</p>
+<p>在页面 <code>http://www.example.com/a.html</code> 中设置 document.domain<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&lt;iframe id = <span class="string">"iframe"</span> src=<span class="string">"http://example.com/b.html"</span> onload = <span class="string">"test()"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span></div><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line">    <span class="built_in">document</span>.domain = <span class="string">'example.com'</span>;<span class="comment">//设置成主域</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(<span class="built_in">document</span>.getElementById(<span class="string">'￼iframe'</span>).contentWindow);<span class="comment">//contentWindow 可取得子窗口的 window 对象</span></div><div class="line">    &#125;</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure></p>
+<p>在页面 <code>http://example.com/b.html</code> 中也设置 document.domain<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line">    <span class="built_in">document</span>.domain = <span class="string">'example.com'</span>;<span class="comment">//在iframe载入这个页面也设置document.domain，使之与主页面的document.domain相同</span></div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="使用windows-name来跨域"><a href="#使用windows-name来跨域" class="headerlink" title="使用windows.name来跨域"></a>使用windows.name来跨域</h3><p>window对象有个name属性，该属性有个特征：即在一个窗口(window)的生命周期内,窗口载入的所有的页面都是共享一个window.name的，每个页面对window.name都有读写的权限，window.name是持久存在一个窗口载入过的所有页面中的。window.name属性的神奇之处在于name 值在不同的页面（甚至不同域名）加载后依旧存在（如果没修改则值不会变化），并且可以支持非常长的 name 值（2MB）。</p>
+<h3 id="使用HTML5的window-postMessage方法跨域"><a href="#使用HTML5的window-postMessage方法跨域" class="headerlink" title="使用HTML5的window.postMessage方法跨域"></a>使用HTML5的window.postMessage方法跨域</h3><p>window.postMessage(message,targetOrigin) 方法是html5新引进的特性，可以使用它来向其它的window对象发送消息，无论这个window对象是属于同源或不同源，目前IE8+、FireFox、Chrome、Opera等浏览器都已经支持window.postMessage方法。</p>
+</script></li></ul>]]></content>
+      
+        <categories>
+            
+            <category> Http </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[HTTP/2]]></title>
+      <url>/2017/08/29/HTTP2%E5%92%8CHTTP1.1/</url>
+      <content type="html"><![CDATA[<h2 id="HTTP-2"><a href="#HTTP-2" class="headerlink" title="HTTP/2"></a>HTTP/2</h2><h3 id="HTTP-2-定义"><a href="#HTTP-2-定义" class="headerlink" title="HTTP/2 定义"></a>HTTP/2 定义</h3><p>HTTP/2（超文本传输协议第2版，最初命名为HTTP 2.0），简称为h2（基于TLS/1.2或以上版本的加密连接）或h2c（非加密连接），是HTTP协议的的第二个主要版本，使用于万维网。</p>
+<h3 id="与HTTP-1-1相比主要区别"><a href="#与HTTP-1-1相比主要区别" class="headerlink" title="与HTTP/1.1相比主要区别"></a>与HTTP/1.1相比主要区别</h3><ul>
+<li>二进制分帧：HTTP/2在应用层和传输层之间增加了一个二进制分帧层，在二进制分帧层中，HTTP/2会将所有传输的信息分割为更小的消息和（frame）,并对它们采用二进制格式的编码。</li>
+<li>多路复用(Multiplexing)：在HTTP/1.1中协议中，浏览器客户端在同一时间，针对同一域名下的请求有一定数量限制。超过限制数目的请求会被阻塞。HTTP/2是完全多路复用的，而非有序并阻塞的——只需一个连接即可实现并行。</li>
+<li>首部压缩(Header Compression)：HTTP/1.1并不支持首部压缩，HTTP/2使用了专门为首部压缩而设计的Hpack算法。</li>
+<li>服务端推送(Server Push)：服务端推送是一种在客户端请求之前发送数据的机制。在HTTP/2中，服务器可以将响应主动“推送”到客户端缓存中。</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Http </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[路由实现原理]]></title>
+      <url>/2017/08/29/%E8%B7%AF%E7%94%B1%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</url>
+      <content type="html"><![CDATA[<h2 id="路由实现原理"><a href="#路由实现原理" class="headerlink" title="路由实现原理"></a>路由实现原理</h2><h3 id="路由的概念"><a href="#路由的概念" class="headerlink" title="路由的概念"></a>路由的概念</h3><ul>
+<li>路由是根据不同的url地址展示不同的内容或者页面</li>
+<li>前端路由就是把不同路由对应不同的内容或页面的任务交给前端来做</li>
+</ul>
+<h3 id="服务器端路由"><a href="#服务器端路由" class="headerlink" title="服务器端路由"></a>服务器端路由</h3><p>对于服务器来说，当接收到客户端发来的HTTP请求，会根据请求的URL，来找到相应的映射函数，然后执行该函数，并将函数的返回值发送给客户端。对于最简单的静态资源服务器，可以认为，所有URL的映射函数就是一个文件读取操作。对于动态资源，映射函数可能是一个数据库读取操作，也可能是进行一些数据的处理，等等。</p>
+<p>以Express为例：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">app.get(<span class="string">'/'</span>, (req, res) =&gt; &#123;</div><div class="line">  <span class="comment">// do something</span></div><div class="line">  res.render(<span class="string">'index'</span>);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">app.get(<span class="string">'/users'</span>, (req, res) =&gt; &#123;</div><div class="line">  <span class="comment">// do something</span></div><div class="line">  res.render(<span class="string">'user'</span>);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>这里就定义了两条路由</p>
+<ul>
+<li>当访问 <code>/</code> 的时候，会返回index页面</li>
+<li>当访问 <code>/users</code> 的时候，会返回user页面</li>
+</ul>
+<p><strong>在router匹配route的过程中，不仅会根据URL来匹配，还会根据请求的方法来看是否匹配。例如上面的例子，如果通过POST方法来访问 <code>/users</code>，就会找不到正确的路由</strong></p>
+<h3 id="客户端路由"><a href="#客户端路由" class="headerlink" title="客户端路由"></a>客户端路由</h3><p>对于客户端（通常为浏览器）来说，路由的映射函数通常是进行一些DOM的显示和隐藏操作。这样，当访问不同的路径的时候，会显示不同的页面组件。客户端路由最常见的有以下两种实现方案：</p>
+<ul>
+<li>基于hash</li>
+<li>基于history</li>
+</ul>
+<h4 id="基于hash"><a href="#基于hash" class="headerlink" title="基于hash"></a>基于hash</h4><p>URL中 <code>#</code> 及其后面的部分为hash。hash仅仅是客户端的一个状态，当向服务器发请求的时候，hash部分并不会发过去。<br>通过监听window对象的hashChange事件，可以实现简单的路。<br>例如，实现一个简单路由，点击触发URL的hash改变，相应地更新内容</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Test<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#/"</span>&gt;</span>turn white<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#/blue"</span>&gt;</span>turn blue<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#/green"</span>&gt;</span>turn green<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Router</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="keyword">this</span>.routes = &#123;&#125;;</div><div class="line">    <span class="keyword">this</span>.currentUrl = <span class="string">''</span>;</div><div class="line">  &#125;</div><div class="line">  route(path, callback) &#123;</div><div class="line">    <span class="keyword">this</span>.routes[path] = callback || <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">  &#125;</div><div class="line">  refresh() &#123;</div><div class="line">    <span class="keyword">this</span>.currentUrl = location.hash.slice(<span class="number">1</span>) || <span class="string">'/'</span>;</div><div class="line">    <span class="keyword">this</span>.routes[<span class="keyword">this</span>.currentUrl]();</div><div class="line">  &#125;</div><div class="line">  init() &#123;</div><div class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'load'</span>, <span class="keyword">this</span>.refresh.bind(<span class="keyword">this</span>), <span class="literal">false</span>);</div><div class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'hashchange'</span>, <span class="keyword">this</span>.refresh.bind(<span class="keyword">this</span>), <span class="literal">false</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> router = <span class="keyword">new</span> Router();</div><div class="line">router.init();</div><div class="line"><span class="comment">// change Page anything</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeBgColor</span>(<span class="params">color</span>) </span>&#123;</div><div class="line">  <span class="built_in">document</span>.body.style.backgroundColor = color;</div><div class="line">&#125;</div><div class="line">router.route(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  changeBgColor(<span class="string">'white'</span>);</div><div class="line">&#125;);</div><div class="line">router.route(<span class="string">'/blue'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  changeBgColor(<span class="string">'blue'</span>);</div><div class="line">&#125;);</div><div class="line">router.route(<span class="string">'/green'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  changeBgColor(<span class="string">'green'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4 id="基于History-API"><a href="#基于History-API" class="headerlink" title="基于History API"></a>基于History API</h4><p>通过 <code>history.pushState</code> 和 <code>history.replaceState</code> 可以在不刷新页面的情况下，直接改变当前URL。</p>
+<p><code>history.pushState</code> 方法接受三个参数，依次为：</p>
+<ul>
+<li><code>state</code>：一个与指定网址相关的状态对象，<code>popState</code>事件触发时，该对象会传入回调函数。</li>
+<li><code>title</code>：新页面的标题，但是所有浏览器目前都忽略这个值，因此这里可以填null。</li>
+<li><code>url</code>：新的网址，必须与当前页面处于同一个域。浏览器的地址栏将显示这个网址。<br>假定当前网址为<code>example.com/1.html</code>，我们使用<code>pushState</code>方法在浏览记录里面（history对象）中添加一个新记录。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> stateObj = &#123; <span class="attr">foo</span>: <span class="string">'bar'</span> &#125;;</div><div class="line">history.pushState(stateObj, <span class="string">'page 2'</span>, <span class="string">'2.html'</span>);</div></pre></td></tr></table></figure>
+<p>添加上面这个新记录后，浏览器地址栏立刻显示<code>example.com/2.html</code>，但并不会跳转到<code>2.html</code>，甚至也不会检查<code>2.html</code>是否存在，它只是成为浏览历史中的最新记录。<code>pushState</code>方法不会触发页面刷新，只是导致history对象发生变化，地址栏会有反应。如果设置了一个跨域网址就会报错。</p>
+<p><code>history.replaceState</code>方法的参数与前者一样，区别是它修改浏览历史中当前记录。</p>
+<h4 id="两种实现的比较"><a href="#两种实现的比较" class="headerlink" title="两种实现的比较"></a>两种实现的比较</h4><ul>
+<li>基于Hash的路由，兼容性更好；基于History API的路由，更加直观和正式</li>
+<li>基于Hash的路由不需要对服务器做改动，基于History API的路由需要对服务器做一些改造</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Javascript </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[深度拷贝]]></title>
+      <url>/2017/08/29/%E6%B7%B1%E5%BA%A6%E6%8B%B7%E8%B4%9D/</url>
+      <content type="html"><![CDATA[<h2 id="Javascript-变量类型"><a href="#Javascript-变量类型" class="headerlink" title="Javascript 变量类型"></a>Javascript 变量类型</h2><ul>
+<li>基本类型：Undefined、Null、Boolean、Number 和 String，变量是直接按值存放的，存放在栈内存中的简单数据段，可以直接访问。</li>
+<li>引用类型：存放在堆内存中的对象，变量保存的是一个指针，这个指针指向另一个位置。当需要访问引用类型（如对象，数组等）的值时，首先从栈中获得该对象的地址指针，然后再从堆内存中取得所需的数据。</li>
+</ul>
+<h2 id="浅拷贝（shallow-copy）"><a href="#浅拷贝（shallow-copy）" class="headerlink" title="浅拷贝（shallow copy）"></a>浅拷贝（shallow copy）</h2><p><strong>JavaScript存储对象都是存地址的，所以浅拷贝会导致 obj1 和obj2 指向同一块内存地址。改变了其中一方的内容，都是在原来的内存上做修改会导致拷贝对象和源对象都发生改变，而深拷贝是开辟一块新的内存地址，将原对象的各个属性逐个复制进去。对拷贝对象和源对象各自的操作互不影响。</strong></p>
+<h3 id="引用复制"><a href="#引用复制" class="headerlink" title="引用复制"></a>引用复制</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">shallowClone</span>(<span class="params">copyObj</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> obj = &#123;&#125;;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> copyObj) &#123;</div><div class="line">    <span class="keyword">if</span> (copyObj.hasOwnProperty(i))&#123;</div><div class="line">      obj[i] = copyObj[i];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> obj;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> x = &#123;</div><div class="line">  a: <span class="number">1</span>,</div><div class="line">  b: &#123; <span class="attr">f</span>: &#123; <span class="attr">g</span>: <span class="number">1</span> &#125; &#125;,</div><div class="line">  c: [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> ]</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> y = shallowClone(x);</div><div class="line"><span class="built_in">console</span>.log(y.b.f === x.b.f);  <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<h3 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign"></a>Object.assign</h3><p><strong>Object.assign() 方法可以把任意多个的源对象自身的可枚举属性拷贝给目标对象，然后返回目标对象。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> x = &#123;</div><div class="line">  a: <span class="number">1</span>,</div><div class="line">  b: &#123; <span class="attr">f</span>: &#123; <span class="attr">g</span>: <span class="number">1</span> &#125; &#125;,</div><div class="line">  c: [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> ]</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> y = <span class="built_in">Object</span>.assign(&#123;&#125;, x);</div><div class="line"><span class="built_in">console</span>.log(y.b.f === x.b.f);     <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>还可以通过<code>Array.prototype.slice()</code>、<code>Array.prototype.concat()</code>或jQuery中的<code>$.extend({}, obj)</code>完成对一个数组或者对象的浅拷贝。</p>
+<h2 id="深度拷贝（deep-copy）"><a href="#深度拷贝（deep-copy）" class="headerlink" title="深度拷贝（deep copy）"></a>深度拷贝（deep copy）</h2><p>深拷贝也就是拷贝出一个新的实例，新的实例和之前的实例互不影响。</p>
+<h3 id="JSON对象的parse和stringify"><a href="#JSON对象的parse和stringify" class="headerlink" title="JSON对象的parse和stringify"></a>JSON对象的parse和stringify</h3><p>JSON对象是ES5中引入的新的类型（支持的浏览器为IE8+），JSON对象parse方法可以将JSON字符串反序列化成JS对象，stringify方法可以将JS对象序列化成JSON字符串，借助这两个方法，也可以实现对象的深拷贝。</p>
+<p>优缺点：</p>
+<ul>
+<li>这种方法使用较为简单，可以满足基本的深拷贝需求，而且能够处理JSON格式能表示的所有数据类型</li>
+<li>对于正则表达式类型、函数类型等无法进行深拷贝(而且会直接丢失相应的值)</li>
+<li>它会抛弃对象的constructor。也就是深拷贝之后，不管这个对象原来的构造函数是什么，在深拷贝之后都会变成Object</li>
+<li>如果对象中存在循环引用的情况也无法正确处理</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> source = &#123;</div><div class="line">  name: <span class="string">"source"</span>,</div><div class="line">  child: &#123; <span class="attr">name</span>: <span class="string">"child"</span> &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> target = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(source));</div><div class="line"></div><div class="line">target.name = <span class="string">"target"</span>; <span class="comment">//改变target的name属性</span></div><div class="line"><span class="built_in">console</span>.log(source.name); <span class="comment">//source </span></div><div class="line"><span class="built_in">console</span>.log(target.name); <span class="comment">//target</span></div><div class="line"></div><div class="line">target.child.name = <span class="string">"target child"</span>; <span class="comment">//改变target的child </span></div><div class="line"><span class="built_in">console</span>.log(source.child.name); <span class="comment">//child </span></div><div class="line"><span class="built_in">console</span>.log(target.child.name); <span class="comment">//target child</span></div></pre></td></tr></table></figure>
+<h3 id="jQuery-extend-方法"><a href="#jQuery-extend-方法" class="headerlink" title="jQuery.extend()方法"></a>jQuery.extend()方法</h3><p><strong>jQuery的extend方法使用基本的递归思路实现了浅拷贝和深拷贝，但是这个方法也无法处理源对象内部循环引用。用法如下：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> x = &#123;</div><div class="line">    a: <span class="number">1</span>,</div><div class="line">    b: &#123; <span class="attr">f</span>: &#123; <span class="attr">g</span>: <span class="number">1</span> &#125; &#125;,</div><div class="line">    c: [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> ]</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> y = $.extend(&#123;&#125;, x),          <span class="comment">//shallow copy</span></div><div class="line">    z = $.extend(<span class="literal">true</span>, &#123;&#125;, x);    <span class="comment">//deep copy</span></div><div class="line"></div><div class="line">y.b.f === x.b.f       <span class="comment">// true</span></div><div class="line">z.b.f === x.b.f       <span class="comment">// false</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> a = &#123;<span class="string">"name"</span>:<span class="string">"aaa"</span>&#125;;</div><div class="line"><span class="keyword">var</span> b = &#123;<span class="string">"name"</span>:<span class="string">"bbb"</span>&#125;;</div><div class="line">a.child = b;</div><div class="line">b.parent = a;</div><div class="line">$.extend(<span class="literal">true</span>,&#123;&#125;,a);<span class="comment">// Uncaught RangeError: Maximum call stack size exceeded</span></div></pre></td></tr></table></figure>
+<h3 id="递归实现"><a href="#递归实现" class="headerlink" title="递归实现"></a>递归实现</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 递归</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span>(<span class="params">source</span>)</span>&#123;</div><div class="line">   <span class="keyword">if</span>(!source || <span class="keyword">typeof</span> source !== <span class="string">'object'</span>)&#123;</div><div class="line">     <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error arguments'</span>, <span class="string">'shallowClone'</span>);</div><div class="line">   &#125;</div><div class="line">   <span class="keyword">var</span> targetObj = source.constructor === <span class="built_in">Array</span> ? [] : &#123;&#125;;</div><div class="line">   <span class="keyword">for</span>(<span class="keyword">var</span> keys <span class="keyword">in</span> source)&#123;</div><div class="line">      <span class="keyword">if</span>(source.hasOwnProperty(keys))&#123;</div><div class="line">         <span class="keyword">if</span>(source[keys] &amp;&amp; <span class="keyword">typeof</span> source[keys] === <span class="string">'object'</span>)&#123;</div><div class="line">           targetObj[keys] = deepClone(source[keys]);</div><div class="line">         &#125;<span class="keyword">else</span>&#123;</div><div class="line">           targetObj[keys] = source[keys];</div><div class="line">         &#125;</div><div class="line">      &#125; </div><div class="line">   &#125;</div><div class="line">   <span class="keyword">return</span> targetObj;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+      
+        <categories>
+            
+            <category> Javascript </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[事件代理]]></title>
+      <url>/2017/08/29/%E4%BA%8B%E4%BB%B6%E4%BB%A3%E7%90%86/</url>
+      <content type="html"><![CDATA[<h2 id="事件阶段"><a href="#事件阶段" class="headerlink" title="事件阶段"></a>事件阶段</h2><p>当一个DOM事件被触发的时候，他并不是只在它的起源对象上触发一次，而是会经历三个不同的阶段。简而言之：事件一开始从文档的根节点流向目标对象(捕获阶段)，然后在目标对向上被触发(目标阶段)，之后再回溯到文档的根节点(冒泡阶段)。</p>
+<h3 id="事件捕获阶段（Capture-Phase）"><a href="#事件捕获阶段（Capture-Phase）" class="headerlink" title="事件捕获阶段（Capture Phase）"></a>事件捕获阶段（Capture Phase）</h3><p>  事件的第一个阶段是捕获阶段。事件从文档的根节点出发，随着DOM树的结构向事件的目标节点流去。途中经过各个层次的DOM节点，并在各节点上触发捕获事件，直到到达时间的目标节点。捕获阶段的主要任务是简历传播路径，在冒泡阶段，时间会通过这个路径回溯到文档根节点。</p>
+<h3 id="目标阶段（Target-Phase）"><a href="#目标阶段（Target-Phase）" class="headerlink" title="目标阶段（Target Phase）"></a>目标阶段（Target Phase）</h3><p>当事件到达目标节点时，事件就进入了目标阶段。事件在目标节点上被触发，然后逆向回流，直到传播到最外层的文档节点。<br>对于多层嵌套的节点，鼠标和指针事件经常会被定位到最里层的元素上。假设，你在一个div元素上设置了click的监听函数，而用户点击在了这个div元素内部的p元素上，那么p元素就是这个时间的目标元素。事件冒泡让我们可以在这个div或者更上层的元素上监听click事件，并且时间传播过程中触发回调函数。</p>
+<p><strong>Event对象提供了一个属性叫target，可以返回事件的目标节点。标准浏览器用event.target，IE用event.srcElement</strong></p>
+<p>兼容IE写法：<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; 　　</div><div class="line">  <span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementById(<span class="string">"list"</span>);　</div><div class="line">  ul.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123; 　　　　</div><div class="line">    <span class="keyword">var</span> e = e || <span class="built_in">window</span>.event; 　　　</div><div class="line">    <span class="keyword">var</span> target = e.target || e.srcElement; 　　　　</div><div class="line">    <span class="keyword">if</span>(target.nodeName.toLowerCase() == <span class="string">'li'</span>)&#123; 　 　　　　　　 </div><div class="line">      <span class="comment">//do something　　　</span></div><div class="line">    &#125; 　</div><div class="line">  &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="事件冒泡阶段（Bubble-Phase）"><a href="#事件冒泡阶段（Bubble-Phase）" class="headerlink" title="事件冒泡阶段（Bubble Phase）"></a>事件冒泡阶段（Bubble Phase）</h3><p>事件在目标事件上触发后，并不在这个元素上终止。它会随着DOM树一层层向上冒泡，直到到达最外层的根节点。也就是说，同一事件会一次在目标节点的父节点，父节点的父节点，直到最外层的节点上触发。</p>
+<p><strong>注：绝大多数事件是会冒泡的，但并非所有的！</strong><br><strong>焦点事件 focus，blur 和鼠标事件 mouseleave 不会冒泡</strong></p>
+<p>事件传播的最上层对象是windows，接着是document，html和body直到目标节点。可以通过 <code>Event.eventPhase</code> 来判断事件流当前处于哪一个阶段，如下：</p>
+<ol>
+<li>eventPhase 为 0： 这个时间没有事件正在被处理</li>
+<li>eventPhase 为 1： 捕获阶段</li>
+<li>eventPhase 为 2： 目标阶段</li>
+<li>eventPhase 为 3： 冒泡阶段</li>
+</ol>
+<h2 id="事件代理（委托）"><a href="#事件代理（委托）" class="headerlink" title="事件代理（委托）"></a>事件代理（委托）</h2><p>事件委托就是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件。通俗地讲，就是把一个元素相应事件（click、keydown、keypress等等）的函数委托到另一个元素上。一般来讲，会把一个或者一组元素的事件委托到它的父层或者更外层元素上，真正绑定事件的是外层元素，当事件响应到需要绑定的元素上时，会通过事件冒泡机制从而触发它的外层元素的绑定事件上，然后在外层元素上去执行函数。</p>
+<h3 id="委托的优点"><a href="#委托的优点" class="headerlink" title="委托的优点"></a>委托的优点</h3><h4 id="1-减少内存消耗"><a href="#1-减少内存消耗" class="headerlink" title="(1).减少内存消耗"></a>(1).减少内存消耗</h4><p>如果有一个列表，列表之中有大量的列表项，需要在点击列表项的时候相应一个事件。如果给每个列表项一一都绑定一个函数，那对于内存消耗是非常大的，效率上需要消耗很多性能。因此比较好的办法就是把这个事件绑定到其父元素‘ul’上，然后在执行事件的时候再去匹配判断目标元素。<br><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"list"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  ...</div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>n<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="2-动态绑定事件"><a href="#2-动态绑定事件" class="headerlink" title="(2).动态绑定事件"></a>(2).动态绑定事件</h4><p>很多情况需要通过动态操作来增加或者去除列表项元素，那么在每一次改变的时候都需要重新给新增的元素绑定事件，给即将删去的元素解绑事件。如果使用事件委托就和目标元素的增减没有关系，因为它是绑定在父层元素上的，所以使用事件在动态绑定事件的情况下是可以减少很多重复工作的。</p>
+<h2 id="关于Jquery中的事件委托"><a href="#关于Jquery中的事件委托" class="headerlink" title="关于Jquery中的事件委托"></a>关于Jquery中的事件委托</h2><p>Jquery中的事件委托主要有以下三种：</p>
+<ol>
+<li>$.fn.on(events [, selector ] [, data ], handler)</li>
+<li>$.fn.delegate(selector, eventType, handler) (使用$.fn.undelegate解除事件绑定)</li>
+<li>$.fn.live(events, handler) (使用$.fn.die解除事件绑定)</li>
+</ol>
+<p><strong>注：从jQuery 1.3开始提供了$.fn.live方法，在1.3版本这个方法只支持特定的事件类型。自从jQuery 1.4.2开始提供$.fn.delegate方法，应优先选择这个方法。$.fn.live方法在jQuery 1.9中已经移除</strong></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Javascript </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[插入排序（Insertion Sort）]]></title>
+      <url>/2017/08/29/InsertionSort/</url>
+      <content type="html"><![CDATA[<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>插入排序（Insertion-Sort）的算法描述是一种简单直观的排序算法。它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。插入排序在实现上，通常采用in-place排序（即只需用到O(1)的额外空间的排序），因而在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间。</p>
+<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><ul>
+<li>从第一个元素开始，该元素可以认为已经被排序</li>
+<li>取出下一个元素，在已经排序的元素序列中从后向前扫描</li>
+<li>如果该元素（已排序）大于新元素，将该元素移到下一位置</li>
+<li>重复步骤3，直到找到已排序的元素小于或者等于新元素的位置</li>
+<li>将新元素插入到该位置后</li>
+<li>重复步骤2~5</li>
+</ul>
+<h2 id="Javascript-代码实现"><a href="#Javascript-代码实现" class="headerlink" title="Javascript 代码实现"></a>Javascript 代码实现</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertionSort</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">  <span class="comment">//假设第0个元素是一个有序的数列，第1个以后的是无序的序列</span></div><div class="line">  <span class="comment">//所以从第1个元素开始将无序数列的元素插入到有序数列中</span></div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;arr.length; i++) &#123;</div><div class="line">     <span class="keyword">var</span> key = arr[i];</div><div class="line">     <span class="keyword">var</span> j = i<span class="number">-1</span>;</div><div class="line">     <span class="keyword">while</span>(j&gt;=<span class="number">0</span> &amp;&amp; arr[j]&gt;key) &#123;</div><div class="line">       arr[j+<span class="number">1</span>] = arr[j];</div><div class="line">       j--;</div><div class="line">     &#125;</div><div class="line">     arr[j+<span class="number">1</span>] = key;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> arr</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><ul>
+<li>最佳情况：输入数组按升序排列。T(n) = O(n)</li>
+<li>最差情况：输入数组按降序排列。T(n) = O(n2)</li>
+<li>平均情况：T(n) = O(n2)</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Sort </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[冒泡排序（Bubble Sort）]]></title>
+      <url>/2017/08/29/BubbleSort/</url>
+      <content type="html"><![CDATA[<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>冒泡排序是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果它们的顺序错误就把它们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。</p>
+<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><ul>
+<li>比较相邻的元素。如果第一个比第二个大，就交换它们两个</li>
+<li>对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对，这样在最后的元素应该会是最大的数</li>
+<li>针对所有的元素重复以上的步骤，除了最后一个</li>
+<li>重复步骤1~3，直到排序完成</li>
+</ul>
+<h2 id="Javascript-代码实现"><a href="#Javascript-代码实现" class="headerlink" title="Javascript 代码实现"></a>Javascript 代码实现</h2><h3 id="bubbleSort-1"><a href="#bubbleSort-1" class="headerlink" title="bubbleSort_1"></a>bubbleSort_1</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort1</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> len = arr.length;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++) &#123;</div><div class="line">      <span class="keyword">if</span> (arr[j] &gt; arr[j+<span class="number">1</span>]) &#123;       </div><div class="line">        <span class="keyword">var</span> temp = arr[j+<span class="number">1</span>];       <span class="comment">// 元素交换</span></div><div class="line">        arr[j+<span class="number">1</span>] = arr[j];</div><div class="line">        arr[j] = temp;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="bubbleSort-2"><a href="#bubbleSort-2" class="headerlink" title="bubbleSort_2"></a>bubbleSort_2</h3><p>改进冒泡排序： 设置一标志性变量pos,用于记录每趟排序中最后一次进行交换的位置。由于pos位置之后的记录均已交换到位,故在进行下一趟排序时只要扫描到pos位置即可。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort2</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> i = arr.length - <span class="number">1</span>;</div><div class="line">  <span class="keyword">while</span>(i &gt; <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">var</span> pos = <span class="number">0</span>;  <span class="comment">// 每趟开始时，无记录交换</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j&lt; i; j++)</div><div class="line">      <span class="keyword">if</span> (arr[j]&gt; arr[j+<span class="number">1</span>]) &#123;</div><div class="line">        pos = j; <span class="comment">//记录交换的位置</span></div><div class="line">        <span class="keyword">var</span> tmp = arr[j]; </div><div class="line">        arr[j] = arr[j+<span class="number">1</span>];</div><div class="line">        arr[j+<span class="number">1</span>] = tmp;</div><div class="line">      &#125;</div><div class="line">    i = pos; <span class="comment">//为下一趟排序作准备</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> arr</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="bubbleSort-3"><a href="#bubbleSort-3" class="headerlink" title="bubbleSort_3"></a>bubbleSort_3</h3><p>传统冒泡排序中每一趟排序操作只能找到一个最大值或最小值，考虑利用在每趟排序中进行正向和反向两遍冒泡的方法一次可以得到两个最终值(最大者和最小者)，从而使排序趟数几乎减少了一半。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort3</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> low = <span class="number">0</span>;</div><div class="line">  <span class="keyword">var</span> high = arr.length - <span class="number">1</span>;          <span class="comment">//设置变量的初始值</span></div><div class="line">  <span class="keyword">var</span> tmp,j;</div><div class="line">  <span class="keyword">while</span> (low &lt; high) &#123;</div><div class="line">    <span class="keyword">for</span> (j = low; j &lt; high; ++j) &#123;     <span class="comment">//正向冒泡，找到最大者</span></div><div class="line">      <span class="keyword">if</span> (arr[j] &gt; arr[j+<span class="number">1</span>]) &#123;</div><div class="line">        tmp = arr[j]; </div><div class="line">        arr[j] = arr[j+<span class="number">1</span>];</div><div class="line">        arr[j+<span class="number">1</span>] = tmp;</div><div class="line">      &#125;</div><div class="line">      --high;                       <span class="comment">//修改high值，前移一位</span></div><div class="line">    &#125;             </div><div class="line">    <span class="keyword">for</span> (j = high; j &gt; low; --j) &#123;      <span class="comment">//反向冒泡，找到最小者</span></div><div class="line">      <span class="keyword">if</span> (arr[j] &lt; arr[j<span class="number">-1</span>]) &#123;</div><div class="line">        tmp = arr[j]; </div><div class="line">        arr[j] = arr[j<span class="number">-1</span>];</div><div class="line">        arr[j<span class="number">-1</span>] = tmp;</div><div class="line">      &#125;</div><div class="line">      ++low;                  <span class="comment">//修改low值，后移一位</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><ul>
+<li>最佳情况 ： T(n) = O(n)    当输入的数据已经是正序时</li>
+<li>最差情况 ： T(n) = O(n2)   当输入的数据是反序时</li>
+<li>平均情况 ： T(n) = O(n2) </li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Sort </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+  
+  
+    
+  
+</search>
