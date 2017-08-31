@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html style="display: none;" lang="zh">
     <head>
-    <meta charset="utf-8">
-    <!--
+  <meta charset="utf-8">
+  <!--
         © Material Theme
         https://github.com/viosey/hexo-theme-material
         Version: 1.5.0 -->
-    <script>
-        window.materialVersion = "1.5.0"
-        // Delete localstorage with these tags
-        window.oldVersion = [
-            'codestartv1',
-            '1.3.4',
-            '1.4.0',
-            '1.4.0b1'
-        ]
-    </script>
+  <script>
+    window.materialVersion = "1.5.0"
+      // Delete localstorage with these tags
+    window.oldVersion = [
+      'codestartv1',
+      '1.3.4',
+      '1.4.0',
+      '1.4.0b1'
+    ]
+  </script>
 
-    <!-- dns prefetch -->
-    <meta http-equiv="x-dns-prefetch-control" content="on">
+  <!-- dns prefetch -->
+  <meta http-equiv="x-dns-prefetch-control" content="on">
 
 
 
@@ -35,56 +35,410 @@
 
     <!-- Title -->
     
-    <title>
+      <title>
         
-            事件代理 | 
-        
-        Agressif&#39;s Blog
-    </title>
+          事件代理 | 
+            
+              Agressif&#39;s Blog
+      </title>
 
-    <!-- Meta & Info -->
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="format-detection" content="telephone=no"/>
-    <meta name="theme-color" content="#0097A7">
-    <meta name="author" content="Agressif">
-    <meta name="description" itemprop="description" content="">
-    <meta name="keywords" content="web前端">
+      <!-- Meta & Info -->
+      <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+      <meta name="format-detection" content="telephone=no" />
+      <meta name="theme-color" content="#0097A7">
+      <meta name="author" content="Agressif">
+      <meta name="description" itemprop="description" content="">
+      <meta name="keywords" content="web前端">
 
-    <!-- Import lsloader -->
-    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+      <!-- Import lsloader -->
+      <script>
+        (function() {
+          window.lsloader = {
+            jsRunSequence: [],
+            jsnamemap: {},
+            cssnamemap: {}
+          };
+          lsloader.removeLS = function(key) {
+            try {
+              localStorage.removeItem(key)
+            } catch (e) {}
+          };
+          lsloader.setLS = function(key, val) {
+            try {
+              localStorage.setItem(key, val)
+            } catch (e) {}
+          };
+          lsloader.getLS = function(key) {
+            var val = "";
+            try {
+              val = localStorage.getItem(key)
+            } catch (e) {
+              val = ""
+            }
+            return val
+          };
+          versionString = "/*" + (window.materialVersion || "unknownVersion") + "*/";
+          lsloader.clean = function() {
+            try {
+              var keys = [];
+              for (var i = 0; i < localStorage.length; i++) {
+                keys.push(localStorage.key(i))
+              }
+              keys.forEach(function(key) {
+                var data = lsloader.getLS(key);
+                if (window.oldVersion) {
+                  var remove = window.oldVersion.reduce(function(p, c) {
+                    return p || data.indexOf("/*" + c + "*/") !== -1
+                  }, false);
+                  if (remove) {
+                    lsloader.removeLS(key)
+                  }
+                }
+              })
+            } catch (e) {}
+          };
+          lsloader.clean();
+          lsloader.load = function(jsname, jspath, cssonload, isJs) {
+            if (typeof cssonload === "boolean") {
+              isJs = cssonload;
+              cssonload = undefined
+            }
+            isJs = isJs || false;
+            cssonload = cssonload || function() {};
+            var code;
+            code = this.getLS(jsname);
+            if (code && code.indexOf(versionString) === -1) {
+              this.removeLS(jsname);
+              this.requestResource(jsname, jspath, cssonload, isJs);
+              return
+            }
+            if (code) {
+              var versionNumber = code.split(versionString)[0];
+              if (versionNumber != jspath) {
+                console.log("reload:" + jspath);
+                this.removeLS(jsname);
+                this.requestResource(jsname, jspath, cssonload, isJs);
+                return
+              }
+              code = code.split(versionString)[1];
+              if (isJs) {
+                this.jsRunSequence.push({
+                  name: jsname,
+                  code: code
+                });
+                this.runjs(jspath, jsname, code)
+              } else {
+                document.getElementById(jsname).appendChild(document.createTextNode(code));
+                cssonload()
+              }
+            } else {
+              this.requestResource(jsname, jspath, cssonload, isJs)
+            }
+          };
+          lsloader.requestResource = function(name, path, cssonload, isJs) {
+            var that = this;
+            if (isJs) {
+              this.iojs(path, name, function(path, name, code) {
+                that.setLS(name, path + versionString + code);
+                that.runjs(path, name, code)
+              })
+            } else {
+              this.iocss(path, name, function(code) {
+                document.getElementById(name).appendChild(document.createTextNode(code));
+                that.setLS(name, path + versionString + code)
+              }, cssonload)
+            }
+          };
+          lsloader.iojs = function(path, jsname, callback) {
+            var that = this;
+            that.jsRunSequence.push({
+              name: jsname,
+              code: ""
+            });
+            try {
+              var xhr = new XMLHttpRequest;
+              xhr.open("get", path, true);
+              xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                  if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                    if (xhr.response != "") {
+                      callback(path, jsname, xhr.response);
+                      return
+                    }
+                  }
+                  that.jsfallback(path, jsname)
+                }
+              };
+              xhr.send(null)
+            } catch (e) {
+              that.jsfallback(path, jsname)
+            }
+          };
+          lsloader.iocss = function(path, jsname, callback, cssonload) {
+            var that = this;
+            try {
+              var xhr = new XMLHttpRequest;
+              xhr.open("get", path, true);
+              xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                  if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                    if (xhr.response != "") {
+                      callback(xhr.response);
+                      cssonload();
+                      return
+                    }
+                  }
+                  that.cssfallback(path, jsname, cssonload)
+                }
+              };
+              xhr.send(null)
+            } catch (e) {
+              that.cssfallback(path, jsname, cssonload)
+            }
+          };
+          lsloader.iofonts = function(path, jsname, callback, cssonload) {
+            var that = this;
+            try {
+              var xhr = new XMLHttpRequest;
+              xhr.open("get", path, true);
+              xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                  if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                    if (xhr.response != "") {
+                      callback(xhr.response);
+                      cssonload();
+                      return
+                    }
+                  }
+                  that.cssfallback(path, jsname, cssonload)
+                }
+              };
+              xhr.send(null)
+            } catch (e) {
+              that.cssfallback(path, jsname, cssonload)
+            }
+          };
+          lsloader.runjs = function(path, name, code) {
+            if (!!name && !!code) {
+              for (var k in this.jsRunSequence) {
+                if (this.jsRunSequence[k].name == name) {
+                  this.jsRunSequence[k].code = code
+                }
+              }
+            }
+            if (!!this.jsRunSequence[0] && !!this.jsRunSequence[0].code && this.jsRunSequence[0].status != "failed") {
+              var script = document.createElement("script");
+              script.appendChild(document.createTextNode(this.jsRunSequence[0].code));
+              script.type = "text/javascript";
+              document.getElementsByTagName("head")[0].appendChild(script);
+              this.jsRunSequence.shift();
+              if (this.jsRunSequence.length > 0) {
+                this.runjs()
+              }
+            } else if (!!this.jsRunSequence[0] && this.jsRunSequence[0].status == "failed") {
+              var that = this;
+              var script = document.createElement("script");
+              script.src = this.jsRunSequence[0].path;
+              script.type = "text/javascript";
+              this.jsRunSequence[0].status = "loading";
+              script.onload = function() {
+                that.jsRunSequence.shift();
+                if (that.jsRunSequence.length > 0) {
+                  that.runjs()
+                }
+              };
+              document.body.appendChild(script)
+            }
+          };
+          lsloader.tagLoad = function(path, name) {
+            this.jsRunSequence.push({
+              name: name,
+              code: "",
+              path: path,
+              status: "failed"
+            });
+            this.runjs()
+          };
+          lsloader.jsfallback = function(path, name) {
+            if (!!this.jsnamemap[name]) {
+              return
+            } else {
+              this.jsnamemap[name] = name
+            }
+            for (var k in this.jsRunSequence) {
+              if (this.jsRunSequence[k].name == name) {
+                this.jsRunSequence[k].code = "";
+                this.jsRunSequence[k].status = "failed";
+                this.jsRunSequence[k].path = path
+              }
+            }
+            this.runjs()
+          };
+          lsloader.cssfallback = function(path, name, cssonload) {
+            if (!!this.cssnamemap[name]) {
+              return
+            } else {
+              this.cssnamemap[name] = 1
+            }
+            var link = document.createElement("link");
+            link.type = "text/css";
+            link.href = path;
+            link.rel = "stylesheet";
+            link.onload = link.onerror = cssonload;
+            var root = document.getElementsByTagName("script")[0];
+            root.parentNode.insertBefore(link, root)
+          };
+          lsloader.runInlineScript = function(scriptId, codeId) {
+            var code = document.getElementById(codeId).innerText;
+            this.jsRunSequence.push({
+              name: scriptId,
+              code: code
+            });
+            this.runjs()
+          };
+          lsloader.loadCombo = function(jslist) {
+            var updateList = "";
+            var requestingModules = {};
+            for (var k in jslist) {
+              var LS = this.getLS(jslist[k].name);
+              if (!!LS) {
+                var version = LS.split(versionString)[0];
+                var code = LS.split(versionString)[1]
+              } else {
+                var version = ""
+              }
+              if (version == jslist[k].path) {
+                this.jsRunSequence.push({
+                  name: jslist[k].name,
+                  code: code,
+                  path: jslist[k].path
+                })
+              } else {
+                this.jsRunSequence.push({
+                  name: jslist[k].name,
+                  code: null,
+                  path: jslist[k].path,
+                  status: "comboloading"
+                });
+                requestingModules[jslist[k].name] = true;
+                updateList += (updateList == "" ? "" : ";") + jslist[k].path
+              }
+            }
+            var that = this;
+            if (!!updateList) {
+              var xhr = new XMLHttpRequest;
+              xhr.open("get", combo + updateList, true);
+              xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                  if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                    if (xhr.response != "") {
+                      that.runCombo(xhr.response, requestingModules);
+                      return
+                    }
+                  } else {
+                    for (var i in that.jsRunSequence) {
+                      if (requestingModules[that.jsRunSequence[i].name]) {
+                        that.jsRunSequence[i].status = "failed"
+                      }
+                    }
+                    that.runjs()
+                  }
+                }
+              };
+              xhr.send(null)
+            }
+            this.runjs()
+          };
+          lsloader.runCombo = function(comboCode, requestingModules) {
+            comboCode = comboCode.split("/*combojs*/");
+            comboCode.shift();
+            for (var k in this.jsRunSequence) {
+              if (!!requestingModules[this.jsRunSequence[k].name] && !!comboCode[0]) {
+                this.jsRunSequence[k].status = "comboJS";
+                this.jsRunSequence[k].code = comboCode[0];
+                this.setLS(this.jsRunSequence[k].name, this.jsRunSequence[k].path + versionString + comboCode[0]);
+                comboCode.shift()
+              }
+            }
+            this.runjs()
+          }
+        })();
+      </script>
 
-    <!-- Import queue -->
-    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+      <!-- Import queue -->
+      <script>
+        function Queue() {
+          this.dataStore = [];
+          this.offer = b;
+          this.poll = d;
+          this.execNext = a;
+          this.debug = false;
+          this.startDebug = c;
 
-    <!-- Favicons -->
-    <link rel="icon shortcut" type="image/ico" href="/img/favicon.ico">
-    <link rel="icon" sizes="192x192" href="/img/X.jpg">
-    <link rel="apple-touch-icon" href="/img/X.jpg">
+          function b(e) {
+            if (this.debug) {
+              console.log("Offered a Queued Function.")
+            }
+            if (typeof e === "function") {
+              this.dataStore.push(e)
+            } else {
+              console.log("You must offer a function.")
+            }
+          }
 
-    <!--iOS -->
-    <meta name="apple-mobile-web-app-title" content="Title">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="480">
+          function d() {
+            if (this.debug) {
+              console.log("Polled a Queued Function.")
+            }
+            return this.dataStore.shift()
+          }
 
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
+          function a() {
+            var e = this.poll();
+            if (e !== undefined) {
+              if (this.debug) {
+                console.log("Run a Queued Function.")
+              }
+              e()
+            }
+          }
 
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Agressif&#39;s Blog">
+          function c() {
+            this.debug = true
+          }
+        }
+        var queue = new Queue();
+      </script>
 
-    <!-- Site Verification -->
-    
-    
+      <!-- Favicons -->
+      <link rel="icon shortcut" type="image/ico" href="/img/favicon.ico">
+      <link rel="icon" sizes="192x192" href="/img/X.jpg">
+      <link rel="apple-touch-icon" href="/img/X.jpg">
 
-    <!-- RSS -->
-    
+      <!--iOS -->
+      <meta name="apple-mobile-web-app-title" content="Title">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      <meta name="HandheldFriendly" content="True">
+      <meta name="MobileOptimized" content="480">
 
-    <!--[if lte IE 9]>
+      <!-- Add to homescreen for Chrome on Android -->
+      <meta name="mobile-web-app-capable" content="yes">
+
+      <!-- Add to homescreen for Safari on iOS -->
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      <meta name="apple-mobile-web-app-title" content="Agressif&#39;s Blog">
+
+      <!-- Site Verification -->
+      
+          
+
+              <!-- RSS -->
+              
+
+                          <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
 
         
@@ -92,18 +446,18 @@
         
     <![endif]-->
 
-    <!-- Import CSS -->
-    
-        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                          <!-- Import CSS -->
+                          
+                                              <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                                                <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
-        
+                                                  
 
-    
+                                                              
 
-    
+                                                                
 
-    <!-- Config CSS -->
+                                                                            <!-- Config CSS -->
 
 <!-- Other Styles -->
 <style>
@@ -223,39 +577,39 @@
 
 
 
-    <!-- Import jQuery -->
-    
-        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
-    
+                                                                              <!-- Import jQuery -->
+                                                                              
+                                                                                        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+                                                                                          
 
-    <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="事件代理 | Agressif&#39;s Blog">
-    <meta property="og:image" content="http://yoursite.com/img/X.jpg" />
-    <meta property="og:description" content="">
-    
+                                                                                            <!-- The Open Graph protocol -->
+                                                                                            <meta property="og:url" content="http://yoursite.com">
+                                                                                            <meta property="og:type" content="blog">
+                                                                                            <meta property="og:title" content="事件代理 | Agressif&#39;s Blog">
+                                                                                            <meta property="og:image" content="http://yoursite.com/img/X.jpg" />
+                                                                                            <meta property="og:description" content="">
+                                                                                            
 
-    
-        <meta property="article:published_time" content="Tue Aug 29 2017 14:31:45 GMT+0800" />
-        <meta property="article:modified_time" content="Tue Aug 29 2017 15:26:48 GMT+0800" />
-    
+                                                                                                
+                                                                                                  <meta property="article:published_time" content="Tue Aug 29 2017 14:31:45 GMT+0800" />
+                                                                                                  <meta property="article:modified_time" content="Tue Aug 29 2017 15:26:48 GMT+0800" />
+                                                                                                  
 
-    <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="事件代理 | Agressif&#39;s Blog">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="http://yoursite.com/img/X.jpg">
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="http://yoursite.com" />
+                                                                                                    <!-- The Twitter Card protocol -->
+                                                                                                    <meta name="twitter:title" content="事件代理 | Agressif&#39;s Blog">
+                                                                                                    <meta name="twitter:description" content="">
+                                                                                                    <meta name="twitter:image" content="http://yoursite.com/img/X.jpg">
+                                                                                                    <meta name="twitter:card" content="summary_large_image" />
+                                                                                                    <meta name="twitter:url" content="http://yoursite.com" />
 
-    <!-- Add canonical link for SEO -->
-    
-        <link rel="canonical" href="http://yoursite.com/2017/08/29/事件代理/index.html" />
-    
+                                                                                                    <!-- Add canonical link for SEO -->
+                                                                                                    
+                                                                                                        <link rel="canonical" href="http://yoursite.com/2017/08/29/事件代理/index.html" />
+                                                                                                        
 
-    <!-- Structured-data for SEO -->
-    
-        
+                                                                                                          <!-- Structured-data for SEO -->
+                                                                                                          
+                                                                                                            
 
 
 <script type="application/ld+json">
@@ -289,37 +643,31 @@
 </script>
 
 
-    
+                                                                                                              
 
-    <!-- Analytics -->
-    
-    
-    
+                                                                                                                <!-- Analytics -->
+                                                                                                                
+                                                                                                                      
+                                                                                                                            
 
-    <!-- Custom Head -->
-    
+                                                                                                                                  <!-- Custom Head -->
+                                                                                                                                  
 
-</head>
-
-
+<link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"><script src="/js/prism.js"></script></head>
     
         <body id="scheme-Paradox" class="lazy">
             <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
                 
-
                 <!-- Main Container -->
                 <main class="material-layout__content" id="main">
-
                     <!-- Top Anchor -->
                     <div id="top"></div>
-
                     
                         <!-- Hamburger Button -->
                         <button class="MD-burger-icon sidebar-toggle">
                             <span class="MD-burger-layer"></span>
                         </button>
                     
-
                     <!-- Post TOC -->
 
     
@@ -486,7 +834,18 @@
 <h3 id="事件捕获阶段（Capture-Phase）"><a href="#事件捕获阶段（Capture-Phase）" class="headerlink" title="事件捕获阶段（Capture Phase）"></a>事件捕获阶段（Capture Phase）</h3><p>  事件的第一个阶段是捕获阶段。事件从文档的根节点出发，随着DOM树的结构向事件的目标节点流去。途中经过各个层次的DOM节点，并在各节点上触发捕获事件，直到到达时间的目标节点。捕获阶段的主要任务是简历传播路径，在冒泡阶段，时间会通过这个路径回溯到文档根节点。</p>
 <h3 id="目标阶段（Target-Phase）"><a href="#目标阶段（Target-Phase）" class="headerlink" title="目标阶段（Target Phase）"></a>目标阶段（Target Phase）</h3><p>当事件到达目标节点时，事件就进入了目标阶段。事件在目标节点上被触发，然后逆向回流，直到传播到最外层的文档节点。<br>对于多层嵌套的节点，鼠标和指针事件经常会被定位到最里层的元素上。假设，你在一个div元素上设置了click的监听函数，而用户点击在了这个div元素内部的p元素上，那么p元素就是这个时间的目标元素。事件冒泡让我们可以在这个div或者更上层的元素上监听click事件，并且时间传播过程中触发回调函数。</p>
 <p><strong>Event对象提供了一个属性叫target，可以返回事件的目标节点。标准浏览器用event.target，IE用event.srcElement</strong></p>
-<p>兼容IE写法：<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; 　　</div><div class="line">  <span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementById(<span class="string">"list"</span>);　</div><div class="line">  ul.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123; 　　　　</div><div class="line">    <span class="keyword">var</span> e = e || <span class="built_in">window</span>.event; 　　　</div><div class="line">    <span class="keyword">var</span> target = e.target || e.srcElement; 　　　　</div><div class="line">    <span class="keyword">if</span>(target.nodeName.toLowerCase() == <span class="string">'li'</span>)&#123; 　 　　　　　　 </div><div class="line">      <span class="comment">//do something　　　</span></div><div class="line">    &#125; 　</div><div class="line">  &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>兼容IE写法：</p>
+<pre class=" language-js"><code class="language-js">window<span class="token punctuation">.</span>onload <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> 　　
+  <span class="token keyword">var</span> ul <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"list"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>　
+  ul<span class="token punctuation">.</span>onclick <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">{</span> 　　　　
+    <span class="token keyword">var</span> e <span class="token operator">=</span> e <span class="token operator">||</span> window<span class="token punctuation">.</span>event<span class="token punctuation">;</span> 　　　
+    <span class="token keyword">var</span> target <span class="token operator">=</span> e<span class="token punctuation">.</span>target <span class="token operator">||</span> e<span class="token punctuation">.</span>srcElement<span class="token punctuation">;</span> 　　　　
+    <span class="token keyword">if</span><span class="token punctuation">(</span>target<span class="token punctuation">.</span>nodeName<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">'li'</span><span class="token punctuation">)</span><span class="token punctuation">{</span> 　 　　　　　　 
+      <span class="token comment" spellcheck="true">//do something　　　</span>
+    <span class="token punctuation">}</span> 　
+  <span class="token punctuation">}</span> 
+<span class="token punctuation">}</span>
+</code></pre>
 <h3 id="事件冒泡阶段（Bubble-Phase）"><a href="#事件冒泡阶段（Bubble-Phase）" class="headerlink" title="事件冒泡阶段（Bubble Phase）"></a>事件冒泡阶段（Bubble Phase）</h3><p>事件在目标事件上触发后，并不在这个元素上终止。它会随着DOM树一层层向上冒泡，直到到达最外层的根节点。也就是说，同一事件会一次在目标节点的父节点，父节点的父节点，直到最外层的节点上触发。</p>
 <p><strong>注：绝大多数事件是会冒泡的，但并非所有的！</strong><br><strong>焦点事件 focus，blur 和鼠标事件 mouseleave 不会冒泡</strong></p>
 <p>事件传播的最上层对象是windows，接着是document，html和body直到目标节点。可以通过 <code>Event.eventPhase</code> 来判断事件流当前处于哪一个阶段，如下：</p>
@@ -497,7 +856,14 @@
 <li>eventPhase 为 3： 冒泡阶段</li>
 </ol>
 <h2 id="事件代理（委托）"><a href="#事件代理（委托）" class="headerlink" title="事件代理（委托）"></a>事件代理（委托）</h2><p>事件委托就是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件。通俗地讲，就是把一个元素相应事件（click、keydown、keypress等等）的函数委托到另一个元素上。一般来讲，会把一个或者一组元素的事件委托到它的父层或者更外层元素上，真正绑定事件的是外层元素，当事件响应到需要绑定的元素上时，会通过事件冒泡机制从而触发它的外层元素的绑定事件上，然后在外层元素上去执行函数。</p>
-<h3 id="委托的优点"><a href="#委托的优点" class="headerlink" title="委托的优点"></a>委托的优点</h3><h4 id="1-减少内存消耗"><a href="#1-减少内存消耗" class="headerlink" title="(1).减少内存消耗"></a>(1).减少内存消耗</h4><p>如果有一个列表，列表之中有大量的列表项，需要在点击列表项的时候相应一个事件。如果给每个列表项一一都绑定一个函数，那对于内存消耗是非常大的，效率上需要消耗很多性能。因此比较好的办法就是把这个事件绑定到其父元素‘ul’上，然后在执行事件的时候再去匹配判断目标元素。<br><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"list"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  ...</div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>n<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="委托的优点"><a href="#委托的优点" class="headerlink" title="委托的优点"></a>委托的优点</h3><h4 id="1-减少内存消耗"><a href="#1-减少内存消耗" class="headerlink" title="(1).减少内存消耗"></a>(1).减少内存消耗</h4><p>如果有一个列表，列表之中有大量的列表项，需要在点击列表项的时候相应一个事件。如果给每个列表项一一都绑定一个函数，那对于内存消耗是非常大的，效率上需要消耗很多性能。因此比较好的办法就是把这个事件绑定到其父元素‘ul’上，然后在执行事件的时候再去匹配判断目标元素。</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>list<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  ...
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>n<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
+</code></pre>
 <h4 id="2-动态绑定事件"><a href="#2-动态绑定事件" class="headerlink" title="(2).动态绑定事件"></a>(2).动态绑定事件</h4><p>很多情况需要通过动态操作来增加或者去除列表项元素，那么在每一次改变的时候都需要重新给新增的元素绑定事件，给即将删去的元素解绑事件。如果使用事件委托就和目标元素的增减没有关系，因为它是绑定在父层元素上的，所以使用事件在动态绑定事件的情况下是可以减少很多重复工作的。</p>
 <h2 id="关于Jquery中的事件委托"><a href="#关于Jquery中的事件委托" class="headerlink" title="关于Jquery中的事件委托"></a>关于Jquery中的事件委托</h2><p>Jquery中的事件委托主要有以下三种：</p>
 <ol>
@@ -552,7 +918,6 @@
 
         </div>
     </div>
-
 
 
                     
@@ -726,7 +1091,6 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
-
                     
                         <!-- Footer Top Button -->
                         <div id="back-to-top" class="toTop-wrap">
@@ -736,7 +1100,6 @@ It will not impact the appearance and can give developers a lot of support :)
 </div>
 
                     
-
                     <!--Footer-->
 <footer class="mdl-mini-footer" id="bottom">
   
@@ -828,7 +1191,6 @@ It will not impact the appearance and can give developers a lot of support :)
       </div>
       
 </footer>
-
                     <!-- Import JS File -->
 
     <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>

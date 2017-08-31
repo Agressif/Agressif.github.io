@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html style="display: none;" lang="zh">
     <head>
-    <meta charset="utf-8">
-    <!--
+  <meta charset="utf-8">
+  <!--
         © Material Theme
         https://github.com/viosey/hexo-theme-material
         Version: 1.5.0 -->
-    <script>
-        window.materialVersion = "1.5.0"
-        // Delete localstorage with these tags
-        window.oldVersion = [
-            'codestartv1',
-            '1.3.4',
-            '1.4.0',
-            '1.4.0b1'
-        ]
-    </script>
+  <script>
+    window.materialVersion = "1.5.0"
+      // Delete localstorage with these tags
+    window.oldVersion = [
+      'codestartv1',
+      '1.3.4',
+      '1.4.0',
+      '1.4.0b1'
+    ]
+  </script>
 
-    <!-- dns prefetch -->
-    <meta http-equiv="x-dns-prefetch-control" content="on">
+  <!-- dns prefetch -->
+  <meta http-equiv="x-dns-prefetch-control" content="on">
 
 
 
@@ -35,56 +35,410 @@
 
     <!-- Title -->
     
-    <title>
+      <title>
         
-            冒泡排序（Bubble Sort） | 
-        
-        Agressif&#39;s Blog
-    </title>
+          冒泡排序（Bubble Sort） | 
+            
+              Agressif&#39;s Blog
+      </title>
 
-    <!-- Meta & Info -->
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="format-detection" content="telephone=no"/>
-    <meta name="theme-color" content="#0097A7">
-    <meta name="author" content="Agressif">
-    <meta name="description" itemprop="description" content="">
-    <meta name="keywords" content="web前端">
+      <!-- Meta & Info -->
+      <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+      <meta name="format-detection" content="telephone=no" />
+      <meta name="theme-color" content="#0097A7">
+      <meta name="author" content="Agressif">
+      <meta name="description" itemprop="description" content="">
+      <meta name="keywords" content="web前端">
 
-    <!-- Import lsloader -->
-    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+      <!-- Import lsloader -->
+      <script>
+        (function() {
+          window.lsloader = {
+            jsRunSequence: [],
+            jsnamemap: {},
+            cssnamemap: {}
+          };
+          lsloader.removeLS = function(key) {
+            try {
+              localStorage.removeItem(key)
+            } catch (e) {}
+          };
+          lsloader.setLS = function(key, val) {
+            try {
+              localStorage.setItem(key, val)
+            } catch (e) {}
+          };
+          lsloader.getLS = function(key) {
+            var val = "";
+            try {
+              val = localStorage.getItem(key)
+            } catch (e) {
+              val = ""
+            }
+            return val
+          };
+          versionString = "/*" + (window.materialVersion || "unknownVersion") + "*/";
+          lsloader.clean = function() {
+            try {
+              var keys = [];
+              for (var i = 0; i < localStorage.length; i++) {
+                keys.push(localStorage.key(i))
+              }
+              keys.forEach(function(key) {
+                var data = lsloader.getLS(key);
+                if (window.oldVersion) {
+                  var remove = window.oldVersion.reduce(function(p, c) {
+                    return p || data.indexOf("/*" + c + "*/") !== -1
+                  }, false);
+                  if (remove) {
+                    lsloader.removeLS(key)
+                  }
+                }
+              })
+            } catch (e) {}
+          };
+          lsloader.clean();
+          lsloader.load = function(jsname, jspath, cssonload, isJs) {
+            if (typeof cssonload === "boolean") {
+              isJs = cssonload;
+              cssonload = undefined
+            }
+            isJs = isJs || false;
+            cssonload = cssonload || function() {};
+            var code;
+            code = this.getLS(jsname);
+            if (code && code.indexOf(versionString) === -1) {
+              this.removeLS(jsname);
+              this.requestResource(jsname, jspath, cssonload, isJs);
+              return
+            }
+            if (code) {
+              var versionNumber = code.split(versionString)[0];
+              if (versionNumber != jspath) {
+                console.log("reload:" + jspath);
+                this.removeLS(jsname);
+                this.requestResource(jsname, jspath, cssonload, isJs);
+                return
+              }
+              code = code.split(versionString)[1];
+              if (isJs) {
+                this.jsRunSequence.push({
+                  name: jsname,
+                  code: code
+                });
+                this.runjs(jspath, jsname, code)
+              } else {
+                document.getElementById(jsname).appendChild(document.createTextNode(code));
+                cssonload()
+              }
+            } else {
+              this.requestResource(jsname, jspath, cssonload, isJs)
+            }
+          };
+          lsloader.requestResource = function(name, path, cssonload, isJs) {
+            var that = this;
+            if (isJs) {
+              this.iojs(path, name, function(path, name, code) {
+                that.setLS(name, path + versionString + code);
+                that.runjs(path, name, code)
+              })
+            } else {
+              this.iocss(path, name, function(code) {
+                document.getElementById(name).appendChild(document.createTextNode(code));
+                that.setLS(name, path + versionString + code)
+              }, cssonload)
+            }
+          };
+          lsloader.iojs = function(path, jsname, callback) {
+            var that = this;
+            that.jsRunSequence.push({
+              name: jsname,
+              code: ""
+            });
+            try {
+              var xhr = new XMLHttpRequest;
+              xhr.open("get", path, true);
+              xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                  if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                    if (xhr.response != "") {
+                      callback(path, jsname, xhr.response);
+                      return
+                    }
+                  }
+                  that.jsfallback(path, jsname)
+                }
+              };
+              xhr.send(null)
+            } catch (e) {
+              that.jsfallback(path, jsname)
+            }
+          };
+          lsloader.iocss = function(path, jsname, callback, cssonload) {
+            var that = this;
+            try {
+              var xhr = new XMLHttpRequest;
+              xhr.open("get", path, true);
+              xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                  if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                    if (xhr.response != "") {
+                      callback(xhr.response);
+                      cssonload();
+                      return
+                    }
+                  }
+                  that.cssfallback(path, jsname, cssonload)
+                }
+              };
+              xhr.send(null)
+            } catch (e) {
+              that.cssfallback(path, jsname, cssonload)
+            }
+          };
+          lsloader.iofonts = function(path, jsname, callback, cssonload) {
+            var that = this;
+            try {
+              var xhr = new XMLHttpRequest;
+              xhr.open("get", path, true);
+              xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                  if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                    if (xhr.response != "") {
+                      callback(xhr.response);
+                      cssonload();
+                      return
+                    }
+                  }
+                  that.cssfallback(path, jsname, cssonload)
+                }
+              };
+              xhr.send(null)
+            } catch (e) {
+              that.cssfallback(path, jsname, cssonload)
+            }
+          };
+          lsloader.runjs = function(path, name, code) {
+            if (!!name && !!code) {
+              for (var k in this.jsRunSequence) {
+                if (this.jsRunSequence[k].name == name) {
+                  this.jsRunSequence[k].code = code
+                }
+              }
+            }
+            if (!!this.jsRunSequence[0] && !!this.jsRunSequence[0].code && this.jsRunSequence[0].status != "failed") {
+              var script = document.createElement("script");
+              script.appendChild(document.createTextNode(this.jsRunSequence[0].code));
+              script.type = "text/javascript";
+              document.getElementsByTagName("head")[0].appendChild(script);
+              this.jsRunSequence.shift();
+              if (this.jsRunSequence.length > 0) {
+                this.runjs()
+              }
+            } else if (!!this.jsRunSequence[0] && this.jsRunSequence[0].status == "failed") {
+              var that = this;
+              var script = document.createElement("script");
+              script.src = this.jsRunSequence[0].path;
+              script.type = "text/javascript";
+              this.jsRunSequence[0].status = "loading";
+              script.onload = function() {
+                that.jsRunSequence.shift();
+                if (that.jsRunSequence.length > 0) {
+                  that.runjs()
+                }
+              };
+              document.body.appendChild(script)
+            }
+          };
+          lsloader.tagLoad = function(path, name) {
+            this.jsRunSequence.push({
+              name: name,
+              code: "",
+              path: path,
+              status: "failed"
+            });
+            this.runjs()
+          };
+          lsloader.jsfallback = function(path, name) {
+            if (!!this.jsnamemap[name]) {
+              return
+            } else {
+              this.jsnamemap[name] = name
+            }
+            for (var k in this.jsRunSequence) {
+              if (this.jsRunSequence[k].name == name) {
+                this.jsRunSequence[k].code = "";
+                this.jsRunSequence[k].status = "failed";
+                this.jsRunSequence[k].path = path
+              }
+            }
+            this.runjs()
+          };
+          lsloader.cssfallback = function(path, name, cssonload) {
+            if (!!this.cssnamemap[name]) {
+              return
+            } else {
+              this.cssnamemap[name] = 1
+            }
+            var link = document.createElement("link");
+            link.type = "text/css";
+            link.href = path;
+            link.rel = "stylesheet";
+            link.onload = link.onerror = cssonload;
+            var root = document.getElementsByTagName("script")[0];
+            root.parentNode.insertBefore(link, root)
+          };
+          lsloader.runInlineScript = function(scriptId, codeId) {
+            var code = document.getElementById(codeId).innerText;
+            this.jsRunSequence.push({
+              name: scriptId,
+              code: code
+            });
+            this.runjs()
+          };
+          lsloader.loadCombo = function(jslist) {
+            var updateList = "";
+            var requestingModules = {};
+            for (var k in jslist) {
+              var LS = this.getLS(jslist[k].name);
+              if (!!LS) {
+                var version = LS.split(versionString)[0];
+                var code = LS.split(versionString)[1]
+              } else {
+                var version = ""
+              }
+              if (version == jslist[k].path) {
+                this.jsRunSequence.push({
+                  name: jslist[k].name,
+                  code: code,
+                  path: jslist[k].path
+                })
+              } else {
+                this.jsRunSequence.push({
+                  name: jslist[k].name,
+                  code: null,
+                  path: jslist[k].path,
+                  status: "comboloading"
+                });
+                requestingModules[jslist[k].name] = true;
+                updateList += (updateList == "" ? "" : ";") + jslist[k].path
+              }
+            }
+            var that = this;
+            if (!!updateList) {
+              var xhr = new XMLHttpRequest;
+              xhr.open("get", combo + updateList, true);
+              xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                  if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                    if (xhr.response != "") {
+                      that.runCombo(xhr.response, requestingModules);
+                      return
+                    }
+                  } else {
+                    for (var i in that.jsRunSequence) {
+                      if (requestingModules[that.jsRunSequence[i].name]) {
+                        that.jsRunSequence[i].status = "failed"
+                      }
+                    }
+                    that.runjs()
+                  }
+                }
+              };
+              xhr.send(null)
+            }
+            this.runjs()
+          };
+          lsloader.runCombo = function(comboCode, requestingModules) {
+            comboCode = comboCode.split("/*combojs*/");
+            comboCode.shift();
+            for (var k in this.jsRunSequence) {
+              if (!!requestingModules[this.jsRunSequence[k].name] && !!comboCode[0]) {
+                this.jsRunSequence[k].status = "comboJS";
+                this.jsRunSequence[k].code = comboCode[0];
+                this.setLS(this.jsRunSequence[k].name, this.jsRunSequence[k].path + versionString + comboCode[0]);
+                comboCode.shift()
+              }
+            }
+            this.runjs()
+          }
+        })();
+      </script>
 
-    <!-- Import queue -->
-    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+      <!-- Import queue -->
+      <script>
+        function Queue() {
+          this.dataStore = [];
+          this.offer = b;
+          this.poll = d;
+          this.execNext = a;
+          this.debug = false;
+          this.startDebug = c;
 
-    <!-- Favicons -->
-    <link rel="icon shortcut" type="image/ico" href="/img/favicon.ico">
-    <link rel="icon" sizes="192x192" href="/img/X.jpg">
-    <link rel="apple-touch-icon" href="/img/X.jpg">
+          function b(e) {
+            if (this.debug) {
+              console.log("Offered a Queued Function.")
+            }
+            if (typeof e === "function") {
+              this.dataStore.push(e)
+            } else {
+              console.log("You must offer a function.")
+            }
+          }
 
-    <!--iOS -->
-    <meta name="apple-mobile-web-app-title" content="Title">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="480">
+          function d() {
+            if (this.debug) {
+              console.log("Polled a Queued Function.")
+            }
+            return this.dataStore.shift()
+          }
 
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
+          function a() {
+            var e = this.poll();
+            if (e !== undefined) {
+              if (this.debug) {
+                console.log("Run a Queued Function.")
+              }
+              e()
+            }
+          }
 
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Agressif&#39;s Blog">
+          function c() {
+            this.debug = true
+          }
+        }
+        var queue = new Queue();
+      </script>
 
-    <!-- Site Verification -->
-    
-    
+      <!-- Favicons -->
+      <link rel="icon shortcut" type="image/ico" href="/img/favicon.ico">
+      <link rel="icon" sizes="192x192" href="/img/X.jpg">
+      <link rel="apple-touch-icon" href="/img/X.jpg">
 
-    <!-- RSS -->
-    
+      <!--iOS -->
+      <meta name="apple-mobile-web-app-title" content="Title">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      <meta name="HandheldFriendly" content="True">
+      <meta name="MobileOptimized" content="480">
 
-    <!--[if lte IE 9]>
+      <!-- Add to homescreen for Chrome on Android -->
+      <meta name="mobile-web-app-capable" content="yes">
+
+      <!-- Add to homescreen for Safari on iOS -->
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      <meta name="apple-mobile-web-app-title" content="Agressif&#39;s Blog">
+
+      <!-- Site Verification -->
+      
+          
+
+              <!-- RSS -->
+              
+
+                          <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
 
         
@@ -92,18 +446,18 @@
         
     <![endif]-->
 
-    <!-- Import CSS -->
-    
-        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                          <!-- Import CSS -->
+                          
+                                              <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                                                <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
-        
+                                                  
 
-    
+                                                              
 
-    
+                                                                
 
-    <!-- Config CSS -->
+                                                                            <!-- Config CSS -->
 
 <!-- Other Styles -->
 <style>
@@ -223,39 +577,39 @@
 
 
 
-    <!-- Import jQuery -->
-    
-        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
-    
+                                                                              <!-- Import jQuery -->
+                                                                              
+                                                                                        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+                                                                                          
 
-    <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="冒泡排序（Bubble Sort） | Agressif&#39;s Blog">
-    <meta property="og:image" content="http://yoursite.com/img/X.jpg" />
-    <meta property="og:description" content="">
-    
+                                                                                            <!-- The Open Graph protocol -->
+                                                                                            <meta property="og:url" content="http://yoursite.com">
+                                                                                            <meta property="og:type" content="blog">
+                                                                                            <meta property="og:title" content="冒泡排序（Bubble Sort） | Agressif&#39;s Blog">
+                                                                                            <meta property="og:image" content="http://yoursite.com/img/X.jpg" />
+                                                                                            <meta property="og:description" content="">
+                                                                                            
 
-    
-        <meta property="article:published_time" content="Tue Aug 29 2017 14:22:45 GMT+0800" />
-        <meta property="article:modified_time" content="Tue Aug 29 2017 16:23:12 GMT+0800" />
-    
+                                                                                                
+                                                                                                  <meta property="article:published_time" content="Tue Aug 29 2017 14:22:45 GMT+0800" />
+                                                                                                  <meta property="article:modified_time" content="Tue Aug 29 2017 16:23:12 GMT+0800" />
+                                                                                                  
 
-    <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="冒泡排序（Bubble Sort） | Agressif&#39;s Blog">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="http://yoursite.com/img/X.jpg">
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="http://yoursite.com" />
+                                                                                                    <!-- The Twitter Card protocol -->
+                                                                                                    <meta name="twitter:title" content="冒泡排序（Bubble Sort） | Agressif&#39;s Blog">
+                                                                                                    <meta name="twitter:description" content="">
+                                                                                                    <meta name="twitter:image" content="http://yoursite.com/img/X.jpg">
+                                                                                                    <meta name="twitter:card" content="summary_large_image" />
+                                                                                                    <meta name="twitter:url" content="http://yoursite.com" />
 
-    <!-- Add canonical link for SEO -->
-    
-        <link rel="canonical" href="http://yoursite.com/2017/08/29/BubbleSort/index.html" />
-    
+                                                                                                    <!-- Add canonical link for SEO -->
+                                                                                                    
+                                                                                                        <link rel="canonical" href="http://yoursite.com/2017/08/29/BubbleSort/index.html" />
+                                                                                                        
 
-    <!-- Structured-data for SEO -->
-    
-        
+                                                                                                          <!-- Structured-data for SEO -->
+                                                                                                          
+                                                                                                            
 
 
 <script type="application/ld+json">
@@ -289,37 +643,31 @@
 </script>
 
 
-    
+                                                                                                              
 
-    <!-- Analytics -->
-    
-    
-    
+                                                                                                                <!-- Analytics -->
+                                                                                                                
+                                                                                                                      
+                                                                                                                            
 
-    <!-- Custom Head -->
-    
+                                                                                                                                  <!-- Custom Head -->
+                                                                                                                                  
 
-</head>
-
-
+<link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"><script src="/js/prism.js"></script></head>
     
         <body id="scheme-Paradox" class="lazy">
             <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
                 
-
                 <!-- Main Container -->
                 <main class="material-layout__content" id="main">
-
                     <!-- Top Anchor -->
                     <div id="top"></div>
-
                     
                         <!-- Hamburger Button -->
                         <button class="MD-burger-icon sidebar-toggle">
                             <span class="MD-burger-layer"></span>
                         </button>
                     
-
                     <!-- Post TOC -->
 
     
@@ -489,11 +837,63 @@
 <li>针对所有的元素重复以上的步骤，除了最后一个</li>
 <li>重复步骤1~3，直到排序完成</li>
 </ul>
-<h2 id="Javascript-代码实现"><a href="#Javascript-代码实现" class="headerlink" title="Javascript 代码实现"></a>Javascript 代码实现</h2><h3 id="bubbleSort-1"><a href="#bubbleSort-1" class="headerlink" title="bubbleSort_1"></a>bubbleSort_1</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort1</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> len = arr.length;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++) &#123;</div><div class="line">      <span class="keyword">if</span> (arr[j] &gt; arr[j+<span class="number">1</span>]) &#123;       </div><div class="line">        <span class="keyword">var</span> temp = arr[j+<span class="number">1</span>];       <span class="comment">// 元素交换</span></div><div class="line">        arr[j+<span class="number">1</span>] = arr[j];</div><div class="line">        arr[j] = temp;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Javascript-代码实现"><a href="#Javascript-代码实现" class="headerlink" title="Javascript 代码实现"></a>Javascript 代码实现</h2><h3 id="bubbleSort-1"><a href="#bubbleSort-1" class="headerlink" title="bubbleSort_1"></a>bubbleSort_1</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">bubbleSort1</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> len <span class="token operator">=</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> len <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">></span> arr<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>       
+        <span class="token keyword">var</span> temp <span class="token operator">=</span> arr<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">// 元素交换</span>
+        arr<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> arr<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <h3 id="bubbleSort-2"><a href="#bubbleSort-2" class="headerlink" title="bubbleSort_2"></a>bubbleSort_2</h3><p>改进冒泡排序： 设置一标志性变量pos,用于记录每趟排序中最后一次进行交换的位置。由于pos位置之后的记录均已交换到位,故在进行下一趟排序时只要扫描到pos位置即可。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort2</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> i = arr.length - <span class="number">1</span>;</div><div class="line">  <span class="keyword">while</span>(i &gt; <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">var</span> pos = <span class="number">0</span>;  <span class="comment">// 每趟开始时，无记录交换</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j&lt; i; j++)</div><div class="line">      <span class="keyword">if</span> (arr[j]&gt; arr[j+<span class="number">1</span>]) &#123;</div><div class="line">        pos = j; <span class="comment">//记录交换的位置</span></div><div class="line">        <span class="keyword">var</span> tmp = arr[j]; </div><div class="line">        arr[j] = arr[j+<span class="number">1</span>];</div><div class="line">        arr[j+<span class="number">1</span>] = tmp;</div><div class="line">      &#125;</div><div class="line">    i = pos; <span class="comment">//为下一趟排序作准备</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> arr</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">bubbleSort2</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> i <span class="token operator">=</span> arr<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span>i <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> pos <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 每趟开始时，无记录交换</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">&lt;</span> i<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">></span> arr<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        pos <span class="token operator">=</span> j<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//记录交换的位置</span>
+        <span class="token keyword">var</span> tmp <span class="token operator">=</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span> 
+        arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        arr<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> tmp<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    i <span class="token operator">=</span> pos<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//为下一趟排序作准备</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> arr
+<span class="token punctuation">}</span>
+</code></pre>
 <h3 id="bubbleSort-3"><a href="#bubbleSort-3" class="headerlink" title="bubbleSort_3"></a>bubbleSort_3</h3><p>传统冒泡排序中每一趟排序操作只能找到一个最大值或最小值，考虑利用在每趟排序中进行正向和反向两遍冒泡的方法一次可以得到两个最终值(最大者和最小者)，从而使排序趟数几乎减少了一半。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort3</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> low = <span class="number">0</span>;</div><div class="line">  <span class="keyword">var</span> high = arr.length - <span class="number">1</span>;          <span class="comment">//设置变量的初始值</span></div><div class="line">  <span class="keyword">var</span> tmp,j;</div><div class="line">  <span class="keyword">while</span> (low &lt; high) &#123;</div><div class="line">    <span class="keyword">for</span> (j = low; j &lt; high; ++j) &#123;     <span class="comment">//正向冒泡，找到最大者</span></div><div class="line">      <span class="keyword">if</span> (arr[j] &gt; arr[j+<span class="number">1</span>]) &#123;</div><div class="line">        tmp = arr[j]; </div><div class="line">        arr[j] = arr[j+<span class="number">1</span>];</div><div class="line">        arr[j+<span class="number">1</span>] = tmp;</div><div class="line">      &#125;</div><div class="line">      --high;                       <span class="comment">//修改high值，前移一位</span></div><div class="line">    &#125;             </div><div class="line">    <span class="keyword">for</span> (j = high; j &gt; low; --j) &#123;      <span class="comment">//反向冒泡，找到最小者</span></div><div class="line">      <span class="keyword">if</span> (arr[j] &lt; arr[j<span class="number">-1</span>]) &#123;</div><div class="line">        tmp = arr[j]; </div><div class="line">        arr[j] = arr[j<span class="number">-1</span>];</div><div class="line">        arr[j<span class="number">-1</span>] = tmp;</div><div class="line">      &#125;</div><div class="line">      ++low;                  <span class="comment">//修改low值，后移一位</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">bubbleSort3</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> low <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> high <span class="token operator">=</span> arr<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">//设置变量的初始值</span>
+  <span class="token keyword">var</span> tmp<span class="token punctuation">,</span>j<span class="token punctuation">;</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>low <span class="token operator">&lt;</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>j <span class="token operator">=</span> low<span class="token punctuation">;</span> j <span class="token operator">&lt;</span> high<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">{</span>     <span class="token comment" spellcheck="true">//正向冒泡，找到最大者</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">></span> arr<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        tmp <span class="token operator">=</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span> 
+        arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        arr<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> tmp<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token operator">--</span>high<span class="token punctuation">;</span>                       <span class="token comment" spellcheck="true">//修改high值，前移一位</span>
+    <span class="token punctuation">}</span>             
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>j <span class="token operator">=</span> high<span class="token punctuation">;</span> j <span class="token operator">></span> low<span class="token punctuation">;</span> <span class="token operator">--</span>j<span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token comment" spellcheck="true">//反向冒泡，找到最小者</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> arr<span class="token punctuation">[</span>j<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        tmp <span class="token operator">=</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span> 
+        arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>j<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        arr<span class="token punctuation">[</span>j<span class="token number">-1</span><span class="token punctuation">]</span> <span class="token operator">=</span> tmp<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token operator">++</span>low<span class="token punctuation">;</span>                  <span class="token comment" spellcheck="true">//修改low值，后移一位</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> arr<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><ul>
 <li>最佳情况 ： T(n) = O(n)    当输入的数据已经是正序时</li>
 <li>最差情况 ： T(n) = O(n2)   当输入的数据是反序时</li>
@@ -537,7 +937,6 @@
 
         </div>
     </div>
-
 
 
                     
@@ -711,7 +1110,6 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
-
                     
                         <!-- Footer Top Button -->
                         <div id="back-to-top" class="toTop-wrap">
@@ -721,7 +1119,6 @@ It will not impact the appearance and can give developers a lot of support :)
 </div>
 
                     
-
                     <!--Footer-->
 <footer class="mdl-mini-footer" id="bottom">
   
@@ -813,7 +1210,6 @@ It will not impact the appearance and can give developers a lot of support :)
       </div>
       
 </footer>
-
                     <!-- Import JS File -->
 
     <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>

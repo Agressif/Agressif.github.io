@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html style="display: none;" lang="zh">
     <head>
-    <meta charset="utf-8">
-    <!--
+  <meta charset="utf-8">
+  <!--
         © Material Theme
         https://github.com/viosey/hexo-theme-material
         Version: 1.5.0 -->
-    <script>
-        window.materialVersion = "1.5.0"
-        // Delete localstorage with these tags
-        window.oldVersion = [
-            'codestartv1',
-            '1.3.4',
-            '1.4.0',
-            '1.4.0b1'
-        ]
-    </script>
+  <script>
+    window.materialVersion = "1.5.0"
+      // Delete localstorage with these tags
+    window.oldVersion = [
+      'codestartv1',
+      '1.3.4',
+      '1.4.0',
+      '1.4.0b1'
+    ]
+  </script>
 
-    <!-- dns prefetch -->
-    <meta http-equiv="x-dns-prefetch-control" content="on">
+  <!-- dns prefetch -->
+  <meta http-equiv="x-dns-prefetch-control" content="on">
 
 
 
@@ -35,56 +35,410 @@
 
     <!-- Title -->
     
-    <title>
+      <title>
         
-            路由实现原理 | 
-        
-        Agressif&#39;s Blog
-    </title>
+          路由实现原理 | 
+            
+              Agressif&#39;s Blog
+      </title>
 
-    <!-- Meta & Info -->
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="format-detection" content="telephone=no"/>
-    <meta name="theme-color" content="#0097A7">
-    <meta name="author" content="Agressif">
-    <meta name="description" itemprop="description" content="">
-    <meta name="keywords" content="web前端">
+      <!-- Meta & Info -->
+      <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+      <meta name="format-detection" content="telephone=no" />
+      <meta name="theme-color" content="#0097A7">
+      <meta name="author" content="Agressif">
+      <meta name="description" itemprop="description" content="">
+      <meta name="keywords" content="web前端">
 
-    <!-- Import lsloader -->
-    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+      <!-- Import lsloader -->
+      <script>
+        (function() {
+          window.lsloader = {
+            jsRunSequence: [],
+            jsnamemap: {},
+            cssnamemap: {}
+          };
+          lsloader.removeLS = function(key) {
+            try {
+              localStorage.removeItem(key)
+            } catch (e) {}
+          };
+          lsloader.setLS = function(key, val) {
+            try {
+              localStorage.setItem(key, val)
+            } catch (e) {}
+          };
+          lsloader.getLS = function(key) {
+            var val = "";
+            try {
+              val = localStorage.getItem(key)
+            } catch (e) {
+              val = ""
+            }
+            return val
+          };
+          versionString = "/*" + (window.materialVersion || "unknownVersion") + "*/";
+          lsloader.clean = function() {
+            try {
+              var keys = [];
+              for (var i = 0; i < localStorage.length; i++) {
+                keys.push(localStorage.key(i))
+              }
+              keys.forEach(function(key) {
+                var data = lsloader.getLS(key);
+                if (window.oldVersion) {
+                  var remove = window.oldVersion.reduce(function(p, c) {
+                    return p || data.indexOf("/*" + c + "*/") !== -1
+                  }, false);
+                  if (remove) {
+                    lsloader.removeLS(key)
+                  }
+                }
+              })
+            } catch (e) {}
+          };
+          lsloader.clean();
+          lsloader.load = function(jsname, jspath, cssonload, isJs) {
+            if (typeof cssonload === "boolean") {
+              isJs = cssonload;
+              cssonload = undefined
+            }
+            isJs = isJs || false;
+            cssonload = cssonload || function() {};
+            var code;
+            code = this.getLS(jsname);
+            if (code && code.indexOf(versionString) === -1) {
+              this.removeLS(jsname);
+              this.requestResource(jsname, jspath, cssonload, isJs);
+              return
+            }
+            if (code) {
+              var versionNumber = code.split(versionString)[0];
+              if (versionNumber != jspath) {
+                console.log("reload:" + jspath);
+                this.removeLS(jsname);
+                this.requestResource(jsname, jspath, cssonload, isJs);
+                return
+              }
+              code = code.split(versionString)[1];
+              if (isJs) {
+                this.jsRunSequence.push({
+                  name: jsname,
+                  code: code
+                });
+                this.runjs(jspath, jsname, code)
+              } else {
+                document.getElementById(jsname).appendChild(document.createTextNode(code));
+                cssonload()
+              }
+            } else {
+              this.requestResource(jsname, jspath, cssonload, isJs)
+            }
+          };
+          lsloader.requestResource = function(name, path, cssonload, isJs) {
+            var that = this;
+            if (isJs) {
+              this.iojs(path, name, function(path, name, code) {
+                that.setLS(name, path + versionString + code);
+                that.runjs(path, name, code)
+              })
+            } else {
+              this.iocss(path, name, function(code) {
+                document.getElementById(name).appendChild(document.createTextNode(code));
+                that.setLS(name, path + versionString + code)
+              }, cssonload)
+            }
+          };
+          lsloader.iojs = function(path, jsname, callback) {
+            var that = this;
+            that.jsRunSequence.push({
+              name: jsname,
+              code: ""
+            });
+            try {
+              var xhr = new XMLHttpRequest;
+              xhr.open("get", path, true);
+              xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                  if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                    if (xhr.response != "") {
+                      callback(path, jsname, xhr.response);
+                      return
+                    }
+                  }
+                  that.jsfallback(path, jsname)
+                }
+              };
+              xhr.send(null)
+            } catch (e) {
+              that.jsfallback(path, jsname)
+            }
+          };
+          lsloader.iocss = function(path, jsname, callback, cssonload) {
+            var that = this;
+            try {
+              var xhr = new XMLHttpRequest;
+              xhr.open("get", path, true);
+              xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                  if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                    if (xhr.response != "") {
+                      callback(xhr.response);
+                      cssonload();
+                      return
+                    }
+                  }
+                  that.cssfallback(path, jsname, cssonload)
+                }
+              };
+              xhr.send(null)
+            } catch (e) {
+              that.cssfallback(path, jsname, cssonload)
+            }
+          };
+          lsloader.iofonts = function(path, jsname, callback, cssonload) {
+            var that = this;
+            try {
+              var xhr = new XMLHttpRequest;
+              xhr.open("get", path, true);
+              xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                  if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                    if (xhr.response != "") {
+                      callback(xhr.response);
+                      cssonload();
+                      return
+                    }
+                  }
+                  that.cssfallback(path, jsname, cssonload)
+                }
+              };
+              xhr.send(null)
+            } catch (e) {
+              that.cssfallback(path, jsname, cssonload)
+            }
+          };
+          lsloader.runjs = function(path, name, code) {
+            if (!!name && !!code) {
+              for (var k in this.jsRunSequence) {
+                if (this.jsRunSequence[k].name == name) {
+                  this.jsRunSequence[k].code = code
+                }
+              }
+            }
+            if (!!this.jsRunSequence[0] && !!this.jsRunSequence[0].code && this.jsRunSequence[0].status != "failed") {
+              var script = document.createElement("script");
+              script.appendChild(document.createTextNode(this.jsRunSequence[0].code));
+              script.type = "text/javascript";
+              document.getElementsByTagName("head")[0].appendChild(script);
+              this.jsRunSequence.shift();
+              if (this.jsRunSequence.length > 0) {
+                this.runjs()
+              }
+            } else if (!!this.jsRunSequence[0] && this.jsRunSequence[0].status == "failed") {
+              var that = this;
+              var script = document.createElement("script");
+              script.src = this.jsRunSequence[0].path;
+              script.type = "text/javascript";
+              this.jsRunSequence[0].status = "loading";
+              script.onload = function() {
+                that.jsRunSequence.shift();
+                if (that.jsRunSequence.length > 0) {
+                  that.runjs()
+                }
+              };
+              document.body.appendChild(script)
+            }
+          };
+          lsloader.tagLoad = function(path, name) {
+            this.jsRunSequence.push({
+              name: name,
+              code: "",
+              path: path,
+              status: "failed"
+            });
+            this.runjs()
+          };
+          lsloader.jsfallback = function(path, name) {
+            if (!!this.jsnamemap[name]) {
+              return
+            } else {
+              this.jsnamemap[name] = name
+            }
+            for (var k in this.jsRunSequence) {
+              if (this.jsRunSequence[k].name == name) {
+                this.jsRunSequence[k].code = "";
+                this.jsRunSequence[k].status = "failed";
+                this.jsRunSequence[k].path = path
+              }
+            }
+            this.runjs()
+          };
+          lsloader.cssfallback = function(path, name, cssonload) {
+            if (!!this.cssnamemap[name]) {
+              return
+            } else {
+              this.cssnamemap[name] = 1
+            }
+            var link = document.createElement("link");
+            link.type = "text/css";
+            link.href = path;
+            link.rel = "stylesheet";
+            link.onload = link.onerror = cssonload;
+            var root = document.getElementsByTagName("script")[0];
+            root.parentNode.insertBefore(link, root)
+          };
+          lsloader.runInlineScript = function(scriptId, codeId) {
+            var code = document.getElementById(codeId).innerText;
+            this.jsRunSequence.push({
+              name: scriptId,
+              code: code
+            });
+            this.runjs()
+          };
+          lsloader.loadCombo = function(jslist) {
+            var updateList = "";
+            var requestingModules = {};
+            for (var k in jslist) {
+              var LS = this.getLS(jslist[k].name);
+              if (!!LS) {
+                var version = LS.split(versionString)[0];
+                var code = LS.split(versionString)[1]
+              } else {
+                var version = ""
+              }
+              if (version == jslist[k].path) {
+                this.jsRunSequence.push({
+                  name: jslist[k].name,
+                  code: code,
+                  path: jslist[k].path
+                })
+              } else {
+                this.jsRunSequence.push({
+                  name: jslist[k].name,
+                  code: null,
+                  path: jslist[k].path,
+                  status: "comboloading"
+                });
+                requestingModules[jslist[k].name] = true;
+                updateList += (updateList == "" ? "" : ";") + jslist[k].path
+              }
+            }
+            var that = this;
+            if (!!updateList) {
+              var xhr = new XMLHttpRequest;
+              xhr.open("get", combo + updateList, true);
+              xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                  if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                    if (xhr.response != "") {
+                      that.runCombo(xhr.response, requestingModules);
+                      return
+                    }
+                  } else {
+                    for (var i in that.jsRunSequence) {
+                      if (requestingModules[that.jsRunSequence[i].name]) {
+                        that.jsRunSequence[i].status = "failed"
+                      }
+                    }
+                    that.runjs()
+                  }
+                }
+              };
+              xhr.send(null)
+            }
+            this.runjs()
+          };
+          lsloader.runCombo = function(comboCode, requestingModules) {
+            comboCode = comboCode.split("/*combojs*/");
+            comboCode.shift();
+            for (var k in this.jsRunSequence) {
+              if (!!requestingModules[this.jsRunSequence[k].name] && !!comboCode[0]) {
+                this.jsRunSequence[k].status = "comboJS";
+                this.jsRunSequence[k].code = comboCode[0];
+                this.setLS(this.jsRunSequence[k].name, this.jsRunSequence[k].path + versionString + comboCode[0]);
+                comboCode.shift()
+              }
+            }
+            this.runjs()
+          }
+        })();
+      </script>
 
-    <!-- Import queue -->
-    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+      <!-- Import queue -->
+      <script>
+        function Queue() {
+          this.dataStore = [];
+          this.offer = b;
+          this.poll = d;
+          this.execNext = a;
+          this.debug = false;
+          this.startDebug = c;
 
-    <!-- Favicons -->
-    <link rel="icon shortcut" type="image/ico" href="/img/favicon.ico">
-    <link rel="icon" sizes="192x192" href="/img/X.jpg">
-    <link rel="apple-touch-icon" href="/img/X.jpg">
+          function b(e) {
+            if (this.debug) {
+              console.log("Offered a Queued Function.")
+            }
+            if (typeof e === "function") {
+              this.dataStore.push(e)
+            } else {
+              console.log("You must offer a function.")
+            }
+          }
 
-    <!--iOS -->
-    <meta name="apple-mobile-web-app-title" content="Title">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="480">
+          function d() {
+            if (this.debug) {
+              console.log("Polled a Queued Function.")
+            }
+            return this.dataStore.shift()
+          }
 
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
+          function a() {
+            var e = this.poll();
+            if (e !== undefined) {
+              if (this.debug) {
+                console.log("Run a Queued Function.")
+              }
+              e()
+            }
+          }
 
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Agressif&#39;s Blog">
+          function c() {
+            this.debug = true
+          }
+        }
+        var queue = new Queue();
+      </script>
 
-    <!-- Site Verification -->
-    
-    
+      <!-- Favicons -->
+      <link rel="icon shortcut" type="image/ico" href="/img/favicon.ico">
+      <link rel="icon" sizes="192x192" href="/img/X.jpg">
+      <link rel="apple-touch-icon" href="/img/X.jpg">
 
-    <!-- RSS -->
-    
+      <!--iOS -->
+      <meta name="apple-mobile-web-app-title" content="Title">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      <meta name="HandheldFriendly" content="True">
+      <meta name="MobileOptimized" content="480">
 
-    <!--[if lte IE 9]>
+      <!-- Add to homescreen for Chrome on Android -->
+      <meta name="mobile-web-app-capable" content="yes">
+
+      <!-- Add to homescreen for Safari on iOS -->
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      <meta name="apple-mobile-web-app-title" content="Agressif&#39;s Blog">
+
+      <!-- Site Verification -->
+      
+          
+
+              <!-- RSS -->
+              
+
+                          <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
 
         
@@ -92,18 +446,18 @@
         
     <![endif]-->
 
-    <!-- Import CSS -->
-    
-        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                          <!-- Import CSS -->
+                          
+                                              <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                                                <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
-        
+                                                  
 
-    
+                                                              
 
-    
+                                                                
 
-    <!-- Config CSS -->
+                                                                            <!-- Config CSS -->
 
 <!-- Other Styles -->
 <style>
@@ -223,39 +577,39 @@
 
 
 
-    <!-- Import jQuery -->
-    
-        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
-    
+                                                                              <!-- Import jQuery -->
+                                                                              
+                                                                                        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+                                                                                          
 
-    <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="路由实现原理 | Agressif&#39;s Blog">
-    <meta property="og:image" content="http://yoursite.com/img/X.jpg" />
-    <meta property="og:description" content="">
-    
+                                                                                            <!-- The Open Graph protocol -->
+                                                                                            <meta property="og:url" content="http://yoursite.com">
+                                                                                            <meta property="og:type" content="blog">
+                                                                                            <meta property="og:title" content="路由实现原理 | Agressif&#39;s Blog">
+                                                                                            <meta property="og:image" content="http://yoursite.com/img/X.jpg" />
+                                                                                            <meta property="og:description" content="">
+                                                                                            
 
-    
-        <meta property="article:published_time" content="Tue Aug 29 2017 15:34:26 GMT+0800" />
-        <meta property="article:modified_time" content="Tue Aug 29 2017 15:57:04 GMT+0800" />
-    
+                                                                                                
+                                                                                                  <meta property="article:published_time" content="Tue Aug 29 2017 15:34:26 GMT+0800" />
+                                                                                                  <meta property="article:modified_time" content="Tue Aug 29 2017 15:57:04 GMT+0800" />
+                                                                                                  
 
-    <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="路由实现原理 | Agressif&#39;s Blog">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="http://yoursite.com/img/X.jpg">
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="http://yoursite.com" />
+                                                                                                    <!-- The Twitter Card protocol -->
+                                                                                                    <meta name="twitter:title" content="路由实现原理 | Agressif&#39;s Blog">
+                                                                                                    <meta name="twitter:description" content="">
+                                                                                                    <meta name="twitter:image" content="http://yoursite.com/img/X.jpg">
+                                                                                                    <meta name="twitter:card" content="summary_large_image" />
+                                                                                                    <meta name="twitter:url" content="http://yoursite.com" />
 
-    <!-- Add canonical link for SEO -->
-    
-        <link rel="canonical" href="http://yoursite.com/2017/08/29/路由实现原理/index.html" />
-    
+                                                                                                    <!-- Add canonical link for SEO -->
+                                                                                                    
+                                                                                                        <link rel="canonical" href="http://yoursite.com/2017/08/29/路由实现原理/index.html" />
+                                                                                                        
 
-    <!-- Structured-data for SEO -->
-    
-        
+                                                                                                          <!-- Structured-data for SEO -->
+                                                                                                          
+                                                                                                            
 
 
 <script type="application/ld+json">
@@ -289,37 +643,31 @@
 </script>
 
 
-    
+                                                                                                              
 
-    <!-- Analytics -->
-    
-    
-    
+                                                                                                                <!-- Analytics -->
+                                                                                                                
+                                                                                                                      
+                                                                                                                            
 
-    <!-- Custom Head -->
-    
+                                                                                                                                  <!-- Custom Head -->
+                                                                                                                                  
 
-</head>
-
-
+<link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"><script src="/js/prism.js"></script></head>
     
         <body id="scheme-Paradox" class="lazy">
             <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
                 
-
                 <!-- Main Container -->
                 <main class="material-layout__content" id="main">
-
                     <!-- Top Anchor -->
                     <div id="top"></div>
-
                     
                         <!-- Hamburger Button -->
                         <button class="MD-burger-icon sidebar-toggle">
                             <span class="MD-burger-layer"></span>
                         </button>
                     
-
                     <!-- Post TOC -->
 
     
@@ -488,7 +836,16 @@
 </ul>
 <h3 id="服务器端路由"><a href="#服务器端路由" class="headerlink" title="服务器端路由"></a>服务器端路由</h3><p>对于服务器来说，当接收到客户端发来的HTTP请求，会根据请求的URL，来找到相应的映射函数，然后执行该函数，并将函数的返回值发送给客户端。对于最简单的静态资源服务器，可以认为，所有URL的映射函数就是一个文件读取操作。对于动态资源，映射函数可能是一个数据库读取操作，也可能是进行一些数据的处理，等等。</p>
 <p>以Express为例：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">app.get(<span class="string">'/'</span>, (req, res) =&gt; &#123;</div><div class="line">  <span class="comment">// do something</span></div><div class="line">  res.render(<span class="string">'index'</span>);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">app.get(<span class="string">'/users'</span>, (req, res) =&gt; &#123;</div><div class="line">  <span class="comment">// do something</span></div><div class="line">  res.render(<span class="string">'user'</span>);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript">app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// do something</span>
+  res<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token string">'index'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/users'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// do something</span>
+  res<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token string">'user'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
 <p>这里就定义了两条路由</p>
 <ul>
 <li>当访问 <code>/</code> 的时候，会返回index页面</li>
@@ -501,8 +858,54 @@
 <li>基于history</li>
 </ul>
 <h4 id="基于hash"><a href="#基于hash" class="headerlink" title="基于hash"></a>基于hash</h4><p>URL中 <code>#</code> 及其后面的部分为hash。hash仅仅是客户端的一个状态，当向服务器发请求的时候，hash部分并不会发过去。<br>通过监听window对象的hashChange事件，可以实现简单的路。<br>例如，实现一个简单路由，点击触发URL的hash改变，相应地更新内容</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Test<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#/"</span>&gt;</span>turn white<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#/blue"</span>&gt;</span>turn blue<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#/green"</span>&gt;</span>turn green<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Router</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="keyword">this</span>.routes = &#123;&#125;;</div><div class="line">    <span class="keyword">this</span>.currentUrl = <span class="string">''</span>;</div><div class="line">  &#125;</div><div class="line">  route(path, callback) &#123;</div><div class="line">    <span class="keyword">this</span>.routes[path] = callback || <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">  &#125;</div><div class="line">  refresh() &#123;</div><div class="line">    <span class="keyword">this</span>.currentUrl = location.hash.slice(<span class="number">1</span>) || <span class="string">'/'</span>;</div><div class="line">    <span class="keyword">this</span>.routes[<span class="keyword">this</span>.currentUrl]();</div><div class="line">  &#125;</div><div class="line">  init() &#123;</div><div class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'load'</span>, <span class="keyword">this</span>.refresh.bind(<span class="keyword">this</span>), <span class="literal">false</span>);</div><div class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'hashchange'</span>, <span class="keyword">this</span>.refresh.bind(<span class="keyword">this</span>), <span class="literal">false</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> router = <span class="keyword">new</span> Router();</div><div class="line">router.init();</div><div class="line"><span class="comment">// change Page anything</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeBgColor</span>(<span class="params">color</span>) </span>&#123;</div><div class="line">  <span class="built_in">document</span>.body.style.backgroundColor = color;</div><div class="line">&#125;</div><div class="line">router.route(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  changeBgColor(<span class="string">'white'</span>);</div><div class="line">&#125;);</div><div class="line">router.route(<span class="string">'/blue'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  changeBgColor(<span class="string">'blue'</span>);</div><div class="line">&#125;);</div><div class="line">router.route(<span class="string">'/green'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  changeBgColor(<span class="string">'green'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>turn white<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#/blue<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>turn blue<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#/green<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>turn green<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+</code></pre>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">Router</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>routes <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>currentUrl <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">route</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> callback<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>routes<span class="token punctuation">[</span>path<span class="token punctuation">]</span> <span class="token operator">=</span> callback <span class="token operator">||</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">refresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>currentUrl <span class="token operator">=</span> location<span class="token punctuation">.</span>hash<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token string">'/'</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>routes<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>currentUrl<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'load'</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>refresh<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'hashchange'</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>refresh<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> router <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Router</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+router<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// change Page anything</span>
+<span class="token keyword">function</span> <span class="token function">changeBgColor</span><span class="token punctuation">(</span>color<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>style<span class="token punctuation">.</span>backgroundColor <span class="token operator">=</span> color<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+router<span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">changeBgColor</span><span class="token punctuation">(</span><span class="token string">'white'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+router<span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span><span class="token string">'/blue'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">changeBgColor</span><span class="token punctuation">(</span><span class="token string">'blue'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+router<span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span><span class="token string">'/green'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">changeBgColor</span><span class="token punctuation">(</span><span class="token string">'green'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 <h4 id="基于History-API"><a href="#基于History-API" class="headerlink" title="基于History API"></a>基于History API</h4><p>通过 <code>history.pushState</code> 和 <code>history.replaceState</code> 可以在不刷新页面的情况下，直接改变当前URL。</p>
 <p><code>history.pushState</code> 方法接受三个参数，依次为：</p>
 <ul>
@@ -510,7 +913,9 @@
 <li><code>title</code>：新页面的标题，但是所有浏览器目前都忽略这个值，因此这里可以填null。</li>
 <li><code>url</code>：新的网址，必须与当前页面处于同一个域。浏览器的地址栏将显示这个网址。<br>假定当前网址为<code>example.com/1.html</code>，我们使用<code>pushState</code>方法在浏览记录里面（history对象）中添加一个新记录。</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> stateObj = &#123; <span class="attr">foo</span>: <span class="string">'bar'</span> &#125;;</div><div class="line">history.pushState(stateObj, <span class="string">'page 2'</span>, <span class="string">'2.html'</span>);</div></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> stateObj <span class="token operator">=</span> <span class="token punctuation">{</span> foo<span class="token punctuation">:</span> <span class="token string">'bar'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+history<span class="token punctuation">.</span><span class="token function">pushState</span><span class="token punctuation">(</span>stateObj<span class="token punctuation">,</span> <span class="token string">'page 2'</span><span class="token punctuation">,</span> <span class="token string">'2.html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 <p>添加上面这个新记录后，浏览器地址栏立刻显示<code>example.com/2.html</code>，但并不会跳转到<code>2.html</code>，甚至也不会检查<code>2.html</code>是否存在，它只是成为浏览历史中的最新记录。<code>pushState</code>方法不会触发页面刷新，只是导致history对象发生变化，地址栏会有反应。如果设置了一个跨域网址就会报错。</p>
 <p><code>history.replaceState</code>方法的参数与前者一样，区别是它修改浏览历史中当前记录。</p>
 <h4 id="两种实现的比较"><a href="#两种实现的比较" class="headerlink" title="两种实现的比较"></a>两种实现的比较</h4><ul>
@@ -563,7 +968,6 @@
 
         </div>
     </div>
-
 
 
                     
@@ -737,7 +1141,6 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
-
                     
                         <!-- Footer Top Button -->
                         <div id="back-to-top" class="toTop-wrap">
@@ -747,7 +1150,6 @@ It will not impact the appearance and can give developers a lot of support :)
 </div>
 
                     
-
                     <!--Footer-->
 <footer class="mdl-mini-footer" id="bottom">
   
@@ -839,7 +1241,6 @@ It will not impact the appearance and can give developers a lot of support :)
       </div>
       
 </footer>
-
                     <!-- Import JS File -->
 
     <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
