@@ -3,6 +3,112 @@
   
     
     <entry>
+      <title><![CDATA[CSS清除浮动]]></title>
+      <url>/2017/09/01/CSS%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/</url>
+      <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>昨天考了美团的笔试，有道简答题是关于css浮动影响以及如何清除，答的不是太好，今天抽空整理总结下。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="什么是浮动"><a href="#什么是浮动" class="headerlink" title="什么是浮动"></a>什么是浮动</h3><p>在布局过程中，我们可以通过设置元素为浮动元素很方便地布局，但是一旦成为浮动元素就会脱离<strong>普通流</strong>，说到这里就要提一下CSS中的定位机制。CSS中有三种定位机制：</p>
+<ol>
+<li>普通流：将窗体自上而下分成一行行, 并在每行中按从左至右的顺序排放元素，即为普通流。</li>
+<li>浮动：浮动的框可以左右移动，直至它的外边缘遇到包含框或者另一个浮动框的边缘。浮动框不属于文档中的普通流，当一个元素浮动之后，不会影响到块级框的布局而只会影响内联框（通常是文本）的排列，文档中的普通流就会表现得和浮动框不存在一样，当浮动框高度超出包含框的时候，也就会出现包含框不会自动伸高来闭合浮动元素（“高度塌陷”现象）。简言之，浮动可以理解为让某个div元素脱离标准流，漂浮在标准流之上，和标准流不是一个层次。</li>
+<li>绝对定位：使用 <code>positon: absolute;</code> 或者 <code>position: fixed</code> 也会让元素脱离普通流。绝对定位的元素的位置相对于最近的已定位祖先元素，如果元素没有已定位的祖先元素，那么它的位置相对于最初的包含块。已定位的祖先元素是指<code>position</code>值不为<code>static</code>的父元素。</li>
+</ol>
+<h3 id="浮动带来的负面影响"><a href="#浮动带来的负面影响" class="headerlink" title="浮动带来的负面影响"></a>浮动带来的负面影响</h3><ol>
+<li>背景不能显示。由于浮动的影响，如果对父元素设置背景图片或者背景色，而父元素不能被撑开也就是“高度坍塌”现象导致了背景无法显示。</li>
+<li>边框不能撑开。由于子级里使用了float属性，产生浮动，父级不能被撑开，导致边框不能随内容而被撑开。</li>
+<li>margin padding设置值无法正确表达</li>
+</ol>
+<h3 id="清除浮动的方法"><a href="#清除浮动的方法" class="headerlink" title="清除浮动的方法"></a>清除浮动的方法</h3><p>假设如下布局</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>main<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>left<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>float left<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>right<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>float right<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
+<pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token id">#main</span> </span><span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">1</span>px solid red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector"><span class="token id">#left</span> </span><span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">1</span>px solid black<span class="token punctuation">;</span>
+  <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector"><span class="token id">#right</span> </span><span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">1</span>px solid black<span class="token punctuation">;</span>
+  <span class="token property">float</span><span class="token punctuation">:</span> right<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">400</span>px<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>清除浮动之前如下图：<br><img src="/img/images/float.png" alt="&quot;未清除浮动&quot;"><br>清除后如下：<br><img src="/img/images/floatclear.png" alt="&quot;清除浮动&quot;"></p>
+<h4 id="方法一：使用带clear属性的空元素"><a href="#方法一：使用带clear属性的空元素" class="headerlink" title="方法一：使用带clear属性的空元素"></a>方法一：使用带<code>clear</code>属性的空元素</h4><p>在浮动元素后使用一个空元素，如下</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>main<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>left<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>float left<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>right<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>float right<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>clear<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>并且在CSS中添加</p>
+<pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token class">.clear</span> </span><span class="token punctuation">{</span>
+  <span class="token property">clear</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>亦或者使用</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>clear<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+</code></pre>
+<ul>
+<li>优点：简单，代码少，浏览器兼容性好</li>
+<li>缺点：需要添加大量无语义的html元素，代码不够优雅</li>
+</ul>
+<h4 id="方法二：使用CSS的overflow属性"><a href="#方法二：使用CSS的overflow属性" class="headerlink" title="方法二：使用CSS的overflow属性"></a>方法二：使用CSS的<code>overflow</code>属性</h4><p>给浮动元素的容器添加 <code>overflow: hidden</code> 或者 <code>overflow: auto</code> 可以清除浮动，在IE6下还需要触发hasLayout就要添加<code>*zoom: 1</code>。</p>
+<pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token id">#main</span> </span><span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">1</span>px solid red<span class="token punctuation">;</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* overflow: auto; */</span>
+  *<span class="token property">zoom</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li>优点：不存在结构和语义化问题，代码少</li>
+<li>缺点：内容增多时候容易造成不会自动换行导致内容被隐藏掉，无法显示需要溢出的元素</li>
+</ul>
+<h4 id="方法三：使用CSS的-after伪元素"><a href="#方法三：使用CSS的-after伪元素" class="headerlink" title="方法三：使用CSS的:after伪元素"></a>方法三：使用CSS的<code>:after</code>伪元素</h4><p>给浮动元素的容器添加一个<code>clearfix</code>的class，然后给这个class添加一个<code>:after</code>伪元素实现元素末尾添加一个看不见的块元素（Block element）清理浮动。</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>main<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>clearfix<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>left<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>float left<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>right<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>float right<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
+<pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token id">#main</span> </span><span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">1</span>px solid red<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 触发hasLayout */</span>
+  <span class="token property">zoom</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector"><span class="token class">.clearfix</span><span class="token pseudo-element">:after</span> </span><span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">"."</span><span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token property">clear</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span>
+  <span class="token property">visibility</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="方法四：给浮动元素的容器设置高度"><a href="#方法四：给浮动元素的容器设置高度" class="headerlink" title="方法四：给浮动元素的容器设置高度"></a>方法四：给浮动元素的容器设置高度</h4><p>给父元素设置高度是最不推荐的，使用设置高度样式，清除浮动产生，前提是对象内容高度要能确定并能计算好。</p>
+<h4 id="方法五：给浮动元素的容器也设置浮动属性"><a href="#方法五：给浮动元素的容器也设置浮动属性" class="headerlink" title="方法五：给浮动元素的容器也设置浮动属性"></a>方法五：给浮动元素的容器也设置浮动属性</h4><ul>
+<li>优点：不存在结构和语义化问题，代码量极少</li>
+<li>缺点：使得与父元素相邻的元素的布局会受到影响，不可能一直浮动到body，不推荐使用</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>清除浮动主要分为两大类：</p>
+<ul>
+<li>利用<code>clear</code>属性，也就是为<code>clear</code>属性添加<code>clear:both</code>来清除浮动，包括使用<code>:after</code>伪元素也是为了添加一个具有该属性的块元素来清除浮动带来的影响</li>
+<li>触发浮动元素父元素的 <code>BFC(Block Formatting Contexts)</code> 使得该父元素可以包含浮动元素，包括更早版本IE6的 <code>hasLayout</code> 也是如此。</li>
+</ul>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[左侧自适应，右侧固定]]></title>
       <url>/2017/09/01/%E5%B8%83%E5%B1%80/</url>
       <content type="html"><![CDATA[<h2 id="实现左侧自适应，右侧固定的布局"><a href="#实现左侧自适应，右侧固定的布局" class="headerlink" title="实现左侧自适应，右侧固定的布局"></a>实现左侧自适应，右侧固定的布局</h2><h2 id="固定浮动区域，自适应区域不设置宽度但设置margin"><a href="#固定浮动区域，自适应区域不设置宽度但设置margin" class="headerlink" title="固定浮动区域，自适应区域不设置宽度但设置margin"></a>固定浮动区域，自适应区域不设置宽度但设置margin</h2><p><strong>HTML结构</strong></p>
