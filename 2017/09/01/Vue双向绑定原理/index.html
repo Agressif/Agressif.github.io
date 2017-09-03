@@ -37,7 +37,7 @@
     
       <title>
         
-          快速排序（Quick Sort） | 
+          Vue双向绑定原理 | 
             
               Agressif&#39;s Blog
       </title>
@@ -585,18 +585,18 @@
                                                                                             <!-- The Open Graph protocol -->
                                                                                             <meta property="og:url" content="http://yoursite.com">
                                                                                             <meta property="og:type" content="blog">
-                                                                                            <meta property="og:title" content="快速排序（Quick Sort） | Agressif&#39;s Blog">
+                                                                                            <meta property="og:title" content="Vue双向绑定原理 | Agressif&#39;s Blog">
                                                                                             <meta property="og:image" content="http://yoursite.com/img/X.jpg" />
                                                                                             <meta property="og:description" content="">
                                                                                             
 
                                                                                                 
-                                                                                                  <meta property="article:published_time" content="Tue Aug 29 2017 16:23:58 GMT+0800" />
-                                                                                                  <meta property="article:modified_time" content="Tue Aug 29 2017 16:25:19 GMT+0800" />
+                                                                                                  <meta property="article:published_time" content="Fri Sep 01 2017 20:42:18 GMT+0800" />
+                                                                                                  <meta property="article:modified_time" content="Sun Sep 03 2017 17:13:20 GMT+0800" />
                                                                                                   
 
                                                                                                     <!-- The Twitter Card protocol -->
-                                                                                                    <meta name="twitter:title" content="快速排序（Quick Sort） | Agressif&#39;s Blog">
+                                                                                                    <meta name="twitter:title" content="Vue双向绑定原理 | Agressif&#39;s Blog">
                                                                                                     <meta name="twitter:description" content="">
                                                                                                     <meta name="twitter:image" content="http://yoursite.com/img/X.jpg">
                                                                                                     <meta name="twitter:card" content="summary_large_image" />
@@ -604,7 +604,7 @@
 
                                                                                                     <!-- Add canonical link for SEO -->
                                                                                                     
-                                                                                                        <link rel="canonical" href="http://yoursite.com/2017/08/29/QuickSort/index.html" />
+                                                                                                        <link rel="canonical" href="http://yoursite.com/2017/09/01/Vue双向绑定原理/index.html" />
                                                                                                         
 
                                                                                                           <!-- Structured-data for SEO -->
@@ -616,10 +616,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yoursite.com/2017/08/29/QuickSort/index.html",
-    "headline": "快速排序（Quick Sort）",
-    "datePublished": "Tue Aug 29 2017 16:23:58 GMT+0800",
-    "dateModified": "Tue Aug 29 2017 16:25:19 GMT+0800",
+    "mainEntityOfPage": "http://yoursite.com/2017/09/01/Vue双向绑定原理/index.html",
+    "headline": "Vue双向绑定原理",
+    "datePublished": "Fri Sep 01 2017 20:42:18 GMT+0800",
+    "dateModified": "Sun Sep 03 2017 17:13:20 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Agressif",
@@ -697,7 +697,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法描述"><span class="post-toc-number">1.</span> <span class="post-toc-text">算法描述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法实现"><span class="post-toc-number">2.</span> <span class="post-toc-text">算法实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Javascript-代码实现"><span class="post-toc-number">3.</span> <span class="post-toc-text">Javascript 代码实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法分析"><span class="post-toc-number">4.</span> <span class="post-toc-text">算法分析</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#何为双向绑定"><span class="post-toc-number">2.</span> <span class="post-toc-text">何为双向绑定</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MVVM架构"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">MVVM架构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单向绑定和双向绑定"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">单向绑定和双向绑定</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -729,7 +729,7 @@
         
     
             <p class="article-headline-p">
-                快速排序（Quick Sort）
+                Vue双向绑定原理
             </p>
         </div>
 
@@ -748,7 +748,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Agressif</strong>
-        <span>8月 29, 2017</span>
+        <span>9月 01, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -779,7 +779,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=快速排序（Quick Sort）&url=http://yoursite.com/2017/08/29/QuickSort/index.html&pic=http://yoursite.com/img/favicon.ico&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Vue双向绑定原理&url=http://yoursite.com/2017/09/01/Vue双向绑定原理/index.html&pic=http://yoursite.com/img/favicon.ico&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -788,7 +788,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=快速排序（Quick Sort）&url=http://yoursite.com/2017/08/29/QuickSort/index.html&via=Agressif" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Vue双向绑定原理&url=http://yoursite.com/2017/09/01/Vue双向绑定原理/index.html&via=Agressif" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -797,7 +797,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/08/29/QuickSort/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/09/01/Vue双向绑定原理/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -812,7 +812,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Agressif&#39;s Blog&title=快速排序（Quick Sort）&summary=&pics=http://yoursite.com/img/favicon.ico&url=http://yoursite.com/2017/08/29/QuickSort/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Agressif&#39;s Blog&title=Vue双向绑定原理&summary=&pics=http://yoursite.com/img/favicon.ico&url=http://yoursite.com/2017/09/01/Vue双向绑定原理/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -830,36 +830,12 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>快速排序的基本思想：通过一趟排序将待排记录分隔成独立的两部分，其中一部分记录的关键字均比另一部分的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序。</p>
-<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><ul>
-<li>从数列中挑出一个元素，称为 “基准”（pivot）</li>
-<li>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作</li>
-<li>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序</li>
-</ul>
-<h2 id="Javascript-代码实现"><a href="#Javascript-代码实现" class="headerlink" title="Javascript 代码实现"></a>Javascript 代码实现</h2><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">quickSort</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token keyword">if</span><span class="token punctuation">(</span>arr<span class="token punctuation">.</span>length <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">return</span> arr<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token comment" spellcheck="true">// 选择基准</span>
-  <span class="token keyword">var</span> pivotIndex <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>arr<span class="token punctuation">.</span>length<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">var</span> pivot <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>pivotIndex<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">// 定义两个空数组，存放子集</span>
-  <span class="token keyword">var</span> left <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-  <span class="token keyword">var</span> right <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-　　<span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> pivot<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-　　　left<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-　　<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-　　　right<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-　　<span class="token punctuation">}</span>
-　<span class="token punctuation">}</span>
-  <span class="token keyword">return</span> <span class="token function">quickSort</span><span class="token punctuation">(</span>left<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token punctuation">[</span>pivot<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token function">quickSort</span><span class="token punctuation">(</span>right<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><ul>
-<li>最佳情况：T(n) = O(nlogn)</li>
-<li>最差情况：T(n) = O(n2)</li>
-<li>平均情况：T(n) = O(nlogn)</li>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天面试远景能源问到了Vue的双向绑定原理，只是知道通过 <code>Object.defineproperty</code> 来操作的，具体流程还不清楚，写篇文章好好了解，为接下来的面试积累经验！</p>
+<h2 id="何为双向绑定"><a href="#何为双向绑定" class="headerlink" title="何为双向绑定"></a>何为双向绑定</h2><h3 id="MVVM架构"><a href="#MVVM架构" class="headerlink" title="MVVM架构"></a>MVVM架构</h3><p>Vue是一种<code>MVVM(Model-View-ViewModel)</code>架构模式，因此在解释双向绑定之前，先来了解一下<code>MVVM</code>架构模式，如下图。它是将“数据模型数据双向绑定”的思想作为核心，因此在View和Model之间没有联系，通过ViewModel进行交互，而且Model和ViewModel之间的交互是双向的，因此视图的数据的变化会同时修改数据源，而数据源数据的变化也会立即反应到View上。<br><img src="/img/images/MVVM.png" alt="&quot;MVVM&quot;"></p>
+<h3 id="单向绑定和双向绑定"><a href="#单向绑定和双向绑定" class="headerlink" title="单向绑定和双向绑定"></a>单向绑定和双向绑定</h3><p>解释完<code>MVVM</code>后，再来看单向绑定和双向绑定。</p>
+<ul>
+<li>单向绑定非常简单，就是把Model绑定到View，当我们用JavaScript代码更新Model时，View就会自动更新。</li>
+<li>有单向绑定，就有双向绑定。如果用户更新了View，Model的数据也自动被更新了，这种情况就是双向绑定。<br>Vue.js是采用数据劫持结合发布者-订阅者模式的方式，通过<code>Object.defineProperty()</code>来劫持各个属性的<code>setter</code>，<code>getter</code>，在数据变动时发布消息给订阅者，触发相应的监听回调。</li>
 </ul>
 
         
@@ -881,7 +857,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/08/29/BucketSort/" id="post_nav-newer" class="prev-content">
+        <a href="/2017/09/02/函数柯里化/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -895,7 +871,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/2017/08/29/Http请求状态码/" id="post_nav-older" class="next-content">
+        <a href="/2017/09/01/CSS清除浮动/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
