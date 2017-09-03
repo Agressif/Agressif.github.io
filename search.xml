@@ -8,6 +8,12 @@
       <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天考了拼多多的笔试题，简答里面有一道提到函数柯里化的问题，总结一下。</p>
 <h2 id="什么是函数柯里化"><a href="#什么是函数柯里化" class="headerlink" title="什么是函数柯里化"></a>什么是函数柯里化</h2><h2 id="函数柯里化的优点"><a href="#函数柯里化的优点" class="headerlink" title="函数柯里化的优点"></a>函数柯里化的优点</h2><h2 id="如何实现函数柯里化"><a href="#如何实现函数柯里化" class="headerlink" title="如何实现函数柯里化"></a>如何实现函数柯里化</h2>]]></content>
       
+        <categories>
+            
+            <category> Javascript </category>
+            
+        </categories>
+        
         
     </entry>
     
@@ -23,6 +29,12 @@
 </ul>
 ]]></content>
       
+        <categories>
+            
+            <category> Javascript </category>
+            
+        </categories>
+        
         
     </entry>
     
@@ -129,6 +141,12 @@
 </ul>
 ]]></content>
       
+        <categories>
+            
+            <category> css </category>
+            
+        </categories>
+        
         
     </entry>
     
@@ -295,6 +313,12 @@
 </code></pre>
 ]]></content>
       
+        <categories>
+            
+            <category> css </category>
+            
+        </categories>
+        
         
     </entry>
     
